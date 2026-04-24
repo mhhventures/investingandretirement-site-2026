@@ -5,6 +5,7 @@ import { getByCategory } from "@/data/products";
 import type { Product } from "@/data/products";
 import { ProductCard, ProductLogo, StarRating } from "@/components/product-card";
 import { CategoryPage } from "@/components/category-page";
+import { useSeo, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/investing")({
   component: Investing,
@@ -107,8 +108,9 @@ function HeroPick({ p }: { p: Product }) {
             Read Full Review
           </Link>
           <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
             className="text-center px-4 py-2.5 rounded-sm bg-white border border-[#d4c5b8] text-black text-[11px] font-semibold uppercase tracking-wider hover:border-[#0e4d45] hover:text-[#0e4d45] transition-colors"
           >
             Visit Site
@@ -172,6 +174,18 @@ function BestForAwards({ products }: { products: Product[] }) {
 }
 
 function Investing() {
+  useSeo({
+    title: "Best Investing Apps & Brokerages 2026 | Investing and Retirement",
+    description: "Compare the top investing apps, online brokerages, and robo-advisors. Expert reviews of Fidelity, Vanguard, Robinhood, Schwab, Webull and more — with fees, features, and ratings.",
+    path: "/investing",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Best Investing Apps & Brokerages",
+      url: `${SITE_URL}/investing`,
+      description: "Curated list of the best investing platforms reviewed by our editorial team.",
+    },
+  });
   const all = getByCategory("investing");
   void HeroPick;
   void BestForAwards;

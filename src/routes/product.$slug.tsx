@@ -1,8 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getBySlug, products } from "@/data/products";
+import { withUtm } from "@/lib/affiliate";
 import { StarRating, ProductLogo } from "@/components/product-card";
 import { Sidebar } from "@/components/sidebar-offers";
 import { ClarityResearch, GradeBadge, ResearchBlocks, StrengthsLimitations } from "@/components/research-blocks";
+import { useSeo, SITE_URL } from "@/lib/seo";
+import { AuthorByline, FtcDisclosure, HowWeReview, EditorialStandardsBadge } from "@/components/eeat";
+import { RelatedGuidesForProduct } from "@/components/related-guides";
+import { getAuthorForCategory, authors } from "@/lib/authors";
 
 export const Route = createFileRoute("/product/$slug")({
   component: ProductDetail,
@@ -11,6 +16,58 @@ export const Route = createFileRoute("/product/$slug")({
 function ProductDetail() {
   const { slug } = Route.useParams();
   const p = getBySlug(slug);
+
+  useSeo(
+    p
+      ? {
+          title: `${p.name} Review 2026 — Rates, Fees & Features | Investing and Retirement`,
+          description: `${p.tagline} Read our expert review of ${p.name} by ${p.provider} — rated ${p.rating}/5 from ${p.reviews.toLocaleString()} reviews. Best for ${p.bestFor.toLowerCase()}.`,
+          path: `/product/${p.slug}`,
+          type: "product",
+          jsonLd: [
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: p.name,
+              description: p.tagline,
+              brand: { "@type": "Brand", name: p.provider },
+              url: `${SITE_URL}/product/${p.slug}`,
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: p.rating,
+                reviewCount: p.reviews,
+                bestRating: 5,
+                worstRating: 1,
+              },
+              review: {
+                "@type": "Review",
+                author: { "@type": "Organization", name: "Investing and Retirement" },
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: p.rating,
+                  bestRating: 5,
+                },
+                reviewBody: p.tagline,
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                { "@type": "ListItem", position: 2, name: p.subcategory, item: `${SITE_URL}/reviews` },
+                { "@type": "ListItem", position: 3, name: p.name, item: `${SITE_URL}/product/${p.slug}` },
+              ],
+            },
+          ],
+        }
+      : {
+          title: "Product Not Found | Investing and Retirement",
+          description: "The product you are looking for could not be found.",
+          path: `/product/${slug}`,
+          noindex: true,
+        }
+  );
 
   if (!p) {
     return (
@@ -25,8 +82,16 @@ function ProductDetail() {
     .filter((x) => x.category === p.category && x.slug !== p.slug)
     .slice(0, 3);
 
+  const author = getAuthorForCategory(p.subcategory);
+  const reviewer = authors["editorial-team"];
+  const publishedDate = "January 2026";
+  const updatedDate = "April 2026";
+
   return (
     <div>
+      {/* FTC Advertiser Disclosure — compact bar at the top, legally required */}
+      <FtcDisclosure variant="compact" />
+
       {/* Breadcrumb */}
       <div className="border-b border-[#e4d9cf] bg-[#fef6f1]">
         <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 text-[10px] sm:text-[11px] text-black/50 overflow-x-auto">
@@ -69,6 +134,20 @@ function ProductDetail() {
                   </div>
                 </div>
 
+                {/* Author byline with E-E-A-T signals */}
+                <div className="mt-2.5 sm:mt-3">
+                  <AuthorByline
+                    author={author}
+                    reviewedBy={reviewer}
+                    publishedDate={publishedDate}
+                    updatedDate={updatedDate}
+                  />
+                </div>
+
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  <EditorialStandardsBadge />
+                </div>
+
                 {/* Key stats row */}
                 <div className="mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t border-[#e4d9cf] grid grid-cols-2 gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
                   {p.apy && (
@@ -96,11 +175,16 @@ function ProductDetail() {
                 {/* CTA row */}
                 <div className="mt-2.5 sm:mt-3">
                   <a
-                    href="#"
-                    onClick={(e) => e.preventDefault()}
+                    href={withUtm(p.url, {
+                      campaign: "product-review",
+                      content: "open-account-cta",
+                      term: p.slug,
+                    })}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
                     className="block text-center px-3 py-2 rounded-sm bg-[#0e4d45] hover:bg-[#0a3832] text-[#fef6f1] text-xs font-semibold transition-colors uppercase tracking-wide"
                   >
-                    Open Account
+                    Open {p.category === "investing" ? "Account" : p.category === "app" ? "App" : "Account"}
                   </a>
                 </div>
               </div>
@@ -129,6 +213,9 @@ function ProductDetail() {
                 transparency.
               </p>
             </section>
+
+            {/* How We Review — transparency for E-E-A-T */}
+            <HowWeReview category={p.category} />
 
             {/* Clarity Research Commentary */}
             <ClarityResearch product={p} />
@@ -166,6 +253,9 @@ function ProductDetail() {
                 on ease of use, value, and customer support.
               </p>
             </section>
+
+            {/* Related Guides — internal linking to editorial content */}
+            <RelatedGuidesForProduct product={p} />
 
             {/* Related Products - Compare Table */}
             {related.length > 0 && (

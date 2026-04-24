@@ -2,6 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { getGuideBySlug, guides } from "@/lib/guides-data";
 import { getProductLogoUrl } from "@/lib/product-icons";
+import { useSeo, SITE_URL, SITE_NAME } from "@/lib/seo";
+import { AuthorByline, FtcDisclosure } from "@/components/eeat";
+import { getAuthorForCategory, authors } from "@/lib/authors";
 
 export const Route = createFileRoute("/guides/$articleId")({
   component: ArticlePage,
@@ -147,11 +150,25 @@ function ArticlePage() {
           <h1 className="font-serif text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] sm:leading-[1.05] text-black mb-4 sm:mb-5 tracking-tight">
             {article.title}
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-[#3a3a3a] leading-relaxed font-light max-w-3xl">
+          <p className="text-base sm:text-lg md:text-xl text-[#3a3a3a] leading-relaxed font-light max-w-3xl mb-5">
             {article.intro}
           </p>
+          <div className="max-w-3xl">
+            <AuthorByline
+              author={getAuthorForCategory(article.category)}
+              reviewedBy={authors["editorial-team"]}
+              publishedDate="January 2026"
+              updatedDate="April 2026"
+              readTime={article.readTime}
+            />
+          </div>
         </div>
       </section>
+
+      {/* FTC Disclosure — guides mention products, so disclose */}
+      <div className="max-w-6xl mx-auto px-4 pt-4">
+        <FtcDisclosure variant="compact" />
+      </div>
 
       {/* Content + Sidebar */}
       <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12 grid lg:grid-cols-[1fr_260px] gap-8 lg:gap-12">
@@ -231,7 +248,11 @@ function ArticlePage() {
                           <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 bg-white border border-[#e4d9cf]">
                             <img
                               src={logoUrl}
-                              alt={`${spot.name} logo`}
+                              alt={`${spot.name} logo — ${spot.provider || spot.name} brand mark`}
+                              width={56}
+                              height={56}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-contain"
                               onError={(e) => {
                                 const target = e.currentTarget;
@@ -312,7 +333,7 @@ function ArticlePage() {
                                   <div className="flex items-center gap-2.5">
                                     {row.slug && getProductLogoUrl(row.slug) ? (
                                       <div className="w-9 h-9 rounded overflow-hidden flex-shrink-0 bg-white border border-[#e4d9cf] flex items-center justify-center">
-                                        <img src={getProductLogoUrl(row.slug)} alt={row.name} className="w-full h-full object-contain" onError={(e) => { (e.currentTarget.style as any).display = 'none'; const fallback = e.currentTarget.nextElementSibling as HTMLElement | null; if (fallback) fallback.style.display = 'flex'; }} />
+                                        <img src={getProductLogoUrl(row.slug)} alt={`${row.name} logo`} width={36} height={36} loading="lazy" decoding="async" className="w-full h-full object-contain" onError={(e) => { (e.currentTarget.style as any).display = 'none'; const fallback = e.currentTarget.nextElementSibling as HTMLElement | null; if (fallback) fallback.style.display = 'flex'; }} />
                                         <div className="w-full h-full hidden items-center justify-center text-white font-bold text-[10px]" style={{ backgroundColor: row.color }}>{row.logoText}</div>
                                       </div>
                                     ) : (
@@ -351,7 +372,7 @@ function ArticlePage() {
                               <div className="font-serif font-bold text-[#0e4d45] text-sm pt-0.5">#{row.rank}</div>
                               {row.slug && getProductLogoUrl(row.slug) ? (
                                 <div className="w-10 h-10 rounded overflow-hidden flex-shrink-0 bg-white border border-[#e4d9cf] flex items-center justify-center">
-                                  <img src={getProductLogoUrl(row.slug)} alt={row.name} className="w-full h-full object-contain" onError={(e) => { (e.currentTarget.style as any).display = 'none'; const fallback = e.currentTarget.nextElementSibling as HTMLElement | null; if (fallback) fallback.style.display = 'flex'; }} />
+                                  <img src={getProductLogoUrl(row.slug)} alt={`${row.name} logo`} width={40} height={40} loading="lazy" decoding="async" className="w-full h-full object-contain" onError={(e) => { (e.currentTarget.style as any).display = 'none'; const fallback = e.currentTarget.nextElementSibling as HTMLElement | null; if (fallback) fallback.style.display = 'flex'; }} />
                                   <div className="w-full h-full hidden items-center justify-center text-white font-bold text-[10px]" style={{ backgroundColor: row.color }}>{row.logoText}</div>
                                 </div>
                               ) : (

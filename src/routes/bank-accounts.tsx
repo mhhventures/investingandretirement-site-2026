@@ -6,6 +6,7 @@ import type { Product } from "@/data/products";
 import { ProductCard, ProductLogo, StarRating } from "@/components/product-card";
 import { BankSidebar } from "@/components/bank-sidebar";
 import { withUtm } from "@/lib/affiliate";
+import { useSeo, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/bank-accounts")({
   component: BankAccounts,
@@ -634,6 +635,18 @@ function EditorialFooter() {
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 function BankAccounts() {
+  useSeo({
+    title: "Best Bank Accounts 2026 — High-Yield Savings & Checking | Investing and Retirement",
+    description: "Compare the best high-yield savings accounts, checking accounts, and CDs. Top APYs, no-fee options, and expert reviews of SoFi, Ally, Marcus, CIT, Barclays, and more.",
+    path: "/bank-accounts",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Best Bank Accounts",
+      url: `${SITE_URL}/bank-accounts`,
+      description: "Curated list of high-yield savings and checking accounts reviewed by our editorial team.",
+    },
+  });
   const all = getByCategory("bank");
   const [filter, setFilter] = useState<string>("All");
   const [sort, setSort] = useState<string>("default");

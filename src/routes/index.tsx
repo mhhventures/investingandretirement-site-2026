@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { products } from "@/data/products";
 import { ProductCard, ProductLogo } from "@/components/product-card";
 import { Sidebar } from "@/components/sidebar-offers";
+import { useSeo, SITE_URL, SITE_NAME } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -54,6 +55,35 @@ function SectionHeader({ title, href, linkText }: { title: string; href?: string
 }
 
 function Home() {
+  useSeo({
+    title: "Investing and Retirement — Compare the Best Financial Products",
+    description: "Expert reviews and comparisons of the best high-yield savings accounts, checking accounts, investing apps, brokerages, and budgeting tools. Find the right financial product for your goals.",
+    path: "/",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: SITE_NAME,
+        url: SITE_URL,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${SITE_URL}/reviews?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1776908612379-yjlz3q6frc-IandR_Horizontal_RGB_Transparent_Black_PNG.png",
+        sameAs: [
+          "https://www.instagram.com/investingandretirement/",
+          "https://investingretirement.substack.com/",
+        ],
+      },
+    ],
+  });
   const editorPicks = products.filter((p) => p.editorsPick);
   const topSavings = products.filter((p) => p.subcategory === "High-Yield Savings").slice(0, 3);
   const topBrokers = products.filter((p) => p.category === "investing").slice(0, 3);
@@ -72,7 +102,7 @@ function Home() {
                 Compare the best financial products, side by side.
               </h1>
               <p className="text-sm md:text-base text-[#1a1a1a] leading-relaxed max-w-2xl">
-                Unbiased reviews of bank accounts, investing apps, and financial tools. Make smarter money moves backed by Clarity Research.
+                Independent, hands-on reviews of the best high-yield savings accounts, brokerages, and money apps for 2026. Every product personally tested.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 flex-shrink-0">
@@ -92,7 +122,7 @@ function Home() {
         <div className="max-w-6xl mx-auto px-4 py-2.5 flex flex-wrap justify-center md:justify-between items-center gap-x-4 gap-y-1.5 text-[11px] text-[#1a1a1a]">
           <div className="flex items-baseline gap-1.5"><span className="font-serif font-bold text-[#0e4d45] text-base leading-none">50+</span><span className="uppercase tracking-wider text-[10px] font-semibold">Products Reviewed</span></div>
           <div className="hidden sm:block h-4 w-px bg-[#d4c5b8]" />
-          <div className="flex items-baseline gap-1.5"><span className="font-serif font-bold text-[#0e4d45] text-base leading-none">100K+</span><span className="uppercase tracking-wider text-[10px] font-semibold">Reader Reviews</span></div>
+          <div className="flex items-baseline gap-1.5"><span className="font-serif font-bold text-[#0e4d45] text-base leading-none">100K+</span><span className="uppercase tracking-wider text-[10px] font-semibold">Global Viewers</span></div>
           <div className="hidden sm:block h-4 w-px bg-[#d4c5b8]" />
           <div className="flex items-baseline gap-1.5"><span className="uppercase tracking-wider font-semibold">Expert Editorial Team</span></div>
         </div>

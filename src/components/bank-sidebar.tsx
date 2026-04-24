@@ -40,7 +40,7 @@ const SAVINGS_COMPARE = [
 const BANK_GUIDES: { slug: string; title: string }[] = [
   { slug: "best-high-yield-savings-accounts-may-2026", title: "Best High-Yield Savings Accounts for May 2026" },
   { slug: "savings-account-timeline", title: "Savings Account Guide: Matching Accounts to Your Timeline" },
-  { slug: "emergency-fund", title: "Emergency Funds: How Much You Need and Where to Keep It" },
+  { slug: "roth-vs-traditional-ira", title: "Roth IRA vs. Traditional IRA: Which Is Right for You?" },
   { slug: "budget-basics-50-30-20", title: "Budget Basics: The 50/30/20 Rule Explained" },
   { slug: "stop-subscription-drain", title: "Subscriptions & Bills: Stop the Silent Drain" },
 ];

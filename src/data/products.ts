@@ -713,7 +713,7 @@ export const products: Product[] = [
     color: "#16a34a",
     editorsPick: true,
     bestFor: "Long-term and retirement investors",
-    url: "https://www.fidelity.com/",
+    url: "https://www.fidelity.com/?utm_source=investing-retirement&utm_medium=affiliate&utm_campaign=editors-pick&utm_content=visit-site-cta&utm_term=fidelity",
   },
   {
     slug: "robinhood",

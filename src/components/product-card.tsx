@@ -41,10 +41,11 @@ export function ProductLogo({ p, size = 40 }: { p: Product; size?: number }) {
       >
         <img
           src={logoUrl}
-          alt={`${p.name} logo`}
+          alt={`${p.name} logo — ${p.provider} ${p.subcategory.toLowerCase()}`}
           width={size}
           height={size}
           loading="lazy"
+          decoding="async"
           onError={() => setFailed(true)}
           className="w-full h-full object-contain p-1"
         />

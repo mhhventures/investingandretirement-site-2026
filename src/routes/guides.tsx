@@ -1,5 +1,6 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { guides } from "@/lib/guides-data";
+import { useSeo, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/guides")({
   component: GuidesLayout,
@@ -18,6 +19,17 @@ function GuidesLayout() {
 }
 
 function GuidesIndex() {
+  useSeo({
+    title: "Financial Guides & Articles | Investing and Retirement",
+    description: "Expert-written guides on saving, budgeting, investing, retirement, and credit. Clear, actionable advice to help you make smarter financial decisions.",
+    path: "/guides",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Financial Guides & Articles",
+      url: `${SITE_URL}/guides`,
+    },
+  });
   return (
     <div className="bg-[#fef6f1]">
       {/* Header */}

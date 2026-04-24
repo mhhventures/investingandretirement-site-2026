@@ -260,10 +260,10 @@ export function Sidebar() {
       <SidebarBlock title="Popular Guides" action="All Guides" actionTo="/guides">
         <ul className="divide-y divide-[#e4d9cf] text-[11px] sm:text-[12px]">
           {[
-            { slug: "savings-account-guide", title: "Savings Account Guide: Matching Accounts to Your Timeline" },
+            { slug: "best-high-yield-savings-accounts-may-2026", title: "Best High-Yield Savings Accounts for May 2026" },
             { slug: "budget-basics-50-30-20", title: "Budget Basics: The 50/30/20 Rule Explained" },
             { slug: "retirement-investing", title: "Retirement Investing: The 20x Rule" },
-            { slug: "emergency-funds", title: "Emergency Funds: How Much You Need" },
+            { slug: "roth-vs-traditional-ira", title: "Roth IRA vs. Traditional IRA: Which Is Right for You?" },
           ].map((g) => (
             <li key={g.slug} className="py-1.5 first:pt-0 last:pb-0">
               <Link to="/guides/$articleId" params={{ articleId: g.slug }} className="text-[#1a1a1a] hover:text-[#0e4d45] leading-snug block">
