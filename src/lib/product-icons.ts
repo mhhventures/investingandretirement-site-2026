@@ -17,6 +17,8 @@ export const productDomains: Record<string, string> = {
   "lendingclub-high-yield": "lendingclub.com",
   "amex-high-yield-savings": "americanexpress.com",
   "forbright-growth-savings": "forbrightbank.com",
+  "axos-high-yield-savings": "axosbank.com",
+  "chime-high-yield-savings": "chime.com",
 
   // Bank accounts — checking
   "chase-total-checking": "chase.com",
@@ -232,8 +234,12 @@ const uploadedLogoSlugMap: Record<string, keyof typeof brandLogoUrls> = {
   "etrade-checking": "etrade",
   "etrade-invest": "etrade",
 
-  // Axos
+  // Axos — all Axos products share the same brand mark
   "axos-rewards-checking": "axos",
+  "axos-high-yield-savings": "axos",
+
+  // Chime HYSA — shares same brand mark
+  "chime-high-yield-savings": "chime",
 
   // Fidelity
   "fidelity": "fidelity",

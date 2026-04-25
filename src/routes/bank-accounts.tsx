@@ -8,6 +8,8 @@ import { BankSidebar } from "@/components/bank-sidebar";
 import { withUtm } from "@/lib/affiliate";
 import { useSeo, SITE_URL } from "@/lib/seo";
 
+const APY_LAST_UPDATED = "May 1, 2026";
+
 export const Route = createFileRoute("/bank-accounts")({
   component: BankAccounts,
 });
