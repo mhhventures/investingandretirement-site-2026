@@ -19,6 +19,12 @@ export const productDomains: Record<string, string> = {
   "forbright-growth-savings": "forbrightbank.com",
   "axos-high-yield-savings": "axosbank.com",
   "chime-high-yield-savings": "chime.com",
+  "chase-savings": "chase.com",
+  "wells-fargo-platinum-savings": "wellsfargo.com",
+  "bofa-advantage-savings": "bankofamerica.com",
+  "citi-savings": "citi.com",
+  "us-bank-savings": "usbank.com",
+  "truist-one-savings": "truist.com",
 
   // Bank accounts — checking
   "chase-total-checking": "chase.com",
@@ -166,6 +172,12 @@ const brandLogoUrls: Record<string, string> = {
   varo: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1776995905380-tqustzivjye-varobank.jpeg",
   cashapp: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1776995907213-gkv5l39rx6t-cash.jpeg",
   perpay: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1776995908985-gf71j5harq-perpay.jpeg",
+  wellsfargo: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087001955-1znd8e3kd2l-wellsfargo.jpeg",
+  bankofamerica: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087004586-ex8fkc0uqnq-bankofamerica.jpeg",
+  citibank: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087006043-gt6l10telpv-citibank.jpeg",
+  usbank: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087007799-hi1tn0n9rh-usbank.jpeg",
+  truist: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087009239-xz4fgw807q-truist.jpeg",
+  chasenew: "https://cdn.shipper.now/image/users/cmo93re2q001fjo04arbwa90b/1777087010904-y5twdl662nl-chase__1_.jpeg",
 };
 
 // Map product slugs → brand key in `brandLogoUrls`.
@@ -240,6 +252,14 @@ const uploadedLogoSlugMap: Record<string, keyof typeof brandLogoUrls> = {
 
   // Chime HYSA — shares same brand mark
   "chime-high-yield-savings": "chime",
+
+  // Big bank savings
+  "chase-savings": "chasenew",
+  "wells-fargo-platinum-savings": "wellsfargo",
+  "bofa-advantage-savings": "bankofamerica",
+  "citi-savings": "citibank",
+  "us-bank-savings": "usbank",
+  "truist-one-savings": "truist",
 
   // Fidelity
   "fidelity": "fidelity",

@@ -1,29 +1,152 @@
 import type { Product } from "@/data/products";
 
 // --- Clarity Research Commentary Block ---
-export function ClarityResearch({ product }: { product: Product }) {
-  const commentary: Record<string, string> = {
-    "sofi-checking-savings":
-      "SoFi delivers one of the strongest all-in-one banking packages available today. The combination of high-yield savings, fee-free checking, and early direct deposit makes it a standout for consumers who want simplicity without sacrifice.",
-    "marcus-savings":
-      "Marcus by Goldman Sachs continues to set the benchmark for high-yield savings. No fees, no minimums, and a consistently competitive APY make it the default recommendation for passive savers.",
-    "ally-savings":
-      "Ally remains one of the most trusted online banks. Its savings rate is competitive, and the bucket-based savings tools provide genuine utility for goal-oriented savers.",
-    "fidelity":
-      "Fidelity is the gold standard for long-term investors. Exceptional research, $0 commissions, and a full suite of retirement accounts make it the top pick for serious wealth builders.",
-    "robinhood":
-      "Robinhood democratized commission-free trading and continues to attract younger investors with its clean interface and fractional share investing. Limited research tools are the main trade-off.",
-    "betterment":
-      "Betterment pioneered automated investing and remains the best robo-advisor for hands-off investors. Tax-loss harvesting and goal-based planning add real value for long-term savers.",
-    "mint":
-      "Mint is the most widely used budgeting app for good reason. Automatic transaction categorization and bill tracking give users a clear picture of their finances with minimal effort.",
-    "credit-karma":
-      "Credit Karma provides genuinely useful free credit monitoring with actionable recommendations. The ad-supported model is transparent and the core product is excellent for credit-building.",
-  };
+// Hand-tuned commentary for flagship products. All other products get
+// commentary generated dynamically from their actual data fields below.
+const handTunedCommentary: Record<string, string> = {
+  "sofi-checking-savings":
+    "SoFi stands out as one of the few institutions pairing a high-yield savings account (up to 4.00% APY with qualifying direct deposit) with a genuinely competitive checking product that earns 0.50% APY. The $400 welcome bonus and FDIC insurance up to $3M via SoFi's insured deposit network make this our top pick for consumers consolidating their day-to-day banking.",
+  "marcus-high-yield":
+    "Marcus by Goldman Sachs delivers a no-frills 3.50% APY with zero fees and no minimum balance. There's no checking account or ATM access, but for savers who simply want a reliable, Wall Street-backed place to park cash, Marcus remains a default recommendation.",
+  "ally-online-savings":
+    "Ally's 3.10% APY is no longer category-leading, but its savings buckets, Surprise Savings automation, and 24/7 live customer service set it apart for goal-oriented savers. The mobile experience is among the best online banks offer.",
+  "fidelity":
+    "Fidelity is the gold standard for long-term investors. Exceptional research, $0 commissions, fractional shares, and a full retirement account suite make it the top pick for serious wealth builders.",
+  "robinhood":
+    "Robinhood pioneered commission-free trading and continues to attract younger investors with fractional shares and a clean UX. Research tools remain the main trade-off versus full-service brokers.",
+  "betterment":
+    "Betterment remains the benchmark robo-advisor. Tax-loss harvesting, goal-based planning, and automated rebalancing deliver real value for hands-off long-term savers.",
+  "mint":
+    "Mint's automatic transaction categorization and bill tracking give users a clear picture of their finances with minimal effort, making it the most widely adopted budgeting app for good reason.",
+  "credit-karma":
+    "Credit Karma remains the default free credit monitoring app for good reason: weekly VantageScore 3.0 updates from both TransUnion and Equifax, an Approval Odds engine that reduces wasted hard inquiries, and a credit score simulator that quantifies the impact of major financial decisions before you make them. The Intuit acquisition added free tax filing via Cash App Taxes and Credit Karma Money (a free checking and 3.00% APY savings account). The recommendation engine is aggressive — expect frequent credit card and personal loan suggestions — but the core monitoring product is genuinely free with no upsell to a paid tier. The main caveat is that VantageScore differs from FICO, which is what most lenders actually use; pair Credit Karma with a free FICO source like Experian or your card issuer's FICO benefit for the complete picture.",
+  "experian":
+    "Experian is the only mainstream app that delivers a free FICO Score 8 directly from a credit bureau — the same score used in 90% of lending decisions. Its standout feature is Experian Boost, which adds on-time utility, phone, streaming, and rent payments to your credit file; typical users see a 13-point lift, which is meaningful if you're on the qualification edge for a mortgage or auto loan. The free tier covers Experian data only, with weekly score refreshes and dark web surveillance. The $24.99/month IdentityWorks Premium tier unlocks 3-bureau FICO monitoring, $1 million in identity theft insurance, and lost wallet assistance — priced higher than Aura or IdentityGuard but tightly integrated with Boost and CreditLock. Experian is best paired with Credit Karma to get FICO + VantageScore visibility across all three bureaus for free.",
+};
 
-  const text =
-    commentary[product.slug] ||
-    `${product.name} offers a strong value proposition in the ${product.subcategory.toLowerCase()} space. Our editorial team reviewed it against key competitors and found it delivers consistent performance for ${product.bestFor.toLowerCase()}.`;
+function buildDynamicCommentary(product: Product): string {
+  const parts: string[] = [];
+
+  // Credit & Loans-specific commentary path
+  if (product.subcategory === "Credit & Loans") {
+    const features = product.platformFeatures ?? [];
+    const featureMentions = features.slice(0, 3).join(", ").toLowerCase();
+    const featureLine = features.length > 0 ? ` Standout features include ${featureMentions}.` : "";
+    const opener = `${product.name} brings together lending, credit-building, and money-management tools in one app, with a ${product.fees} fee structure.${featureLine}`;
+    const topPro = product.pros[0];
+    const topCon = product.cons[0];
+    const middle = topPro ? ` Its strongest attribute is ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.` : "";
+    const closer = topCon
+      ? ` It's best suited for ${product.bestFor.toLowerCase()}, though prospective borrowers should weigh that ${topCon.charAt(0).toLowerCase()}${topCon.slice(1)}.`
+      : ` It's best suited for ${product.bestFor.toLowerCase()}.`;
+    return opener + middle + closer;
+  }
+
+  // Brokerage-specific commentary path — reference assets, account types, and platform features
+  if (product.subcategory === "Brokerage" && (product.accountTypes?.length || product.assetsAvailable?.length || product.platformFeatures?.length)) {
+    const assets = product.assetsAvailable ?? [];
+    const features = product.platformFeatures ?? [];
+    const accountTypes = product.accountTypes ?? [];
+    const assetsList = assets.slice(0, 5).join(", ").toLowerCase();
+    const featureMentions = features.slice(0, 3).join(", ").toLowerCase();
+    const retirementOptions = accountTypes.filter((a) => /ira|401|sep|simple|solo/i.test(a));
+    const retirementLine = retirementOptions.length > 0 ? ` Retirement savers can choose from ${retirementOptions.slice(0, 4).join(", ")}.` : "";
+    const opener = `${product.name} offers ${product.fees} pricing on a platform spanning ${assetsList}.${retirementLine}`;
+    const featureLine = features.length > 0 ? ` Notable platform features include ${featureMentions}.` : "";
+    const topPro = product.pros[0];
+    const topCon = product.cons[0];
+    const middle = topPro ? ` Its strongest attribute is ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.` : "";
+    const closer = topCon
+      ? ` It's best suited for ${product.bestFor.toLowerCase()}, though prospective traders should weigh that ${topCon.charAt(0).toLowerCase()}${topCon.slice(1)}.`
+      : ` It's best suited for ${product.bestFor.toLowerCase()}.`;
+    return opener + featureLine + middle + closer;
+  }
+
+  // Crypto-specific commentary path — reference assets, account types, and platform features
+  if (product.subcategory === "Crypto") {
+    const coins = product.numCryptoAssets ? `${product.numCryptoAssets} cryptocurrencies` : "a deep coin selection";
+    const otherAssets = (product.assetsAvailable ?? []).filter((a) => !/crypto|stablecoin/i.test(a));
+    const multiAsset = otherAssets.length > 0 ? ` Beyond crypto, ${product.name} also supports ${otherAssets.join(", ").toLowerCase()}.` : "";
+    const features = product.platformFeatures ?? [];
+    const featureMentions = features.slice(0, 3).join(", ").toLowerCase();
+    const featureLine = features.length > 0 ? ` Standout platform features include ${featureMentions}.` : "";
+    const opener = `${product.name} offers ${coins} with a ${product.fees} fee structure on its main trading interface.${multiAsset}${featureLine}`;
+    const topPro = product.pros[0];
+    const topCon = product.cons[0];
+    const middle = topPro ? ` Its strongest attribute is ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.` : "";
+    const closer = topCon
+      ? ` It's best suited for ${product.bestFor.toLowerCase()}, though prospective users should weigh that ${topCon.charAt(0).toLowerCase()}${topCon.slice(1)}.`
+      : ` It's best suited for ${product.bestFor.toLowerCase()}.`;
+    return opener + middle + closer;
+  }
+
+  // Prediction-markets specific path
+  if (product.subcategory === "Prediction Markets") {
+    const opener = `${product.name} is a ${product.subcategory.toLowerCase()} platform with a ${product.fees} fee structure and a ${product.minDeposit} minimum to start trading.`;
+    const topPro = product.pros[0];
+    const topCon = product.cons[0];
+    const middle = topPro ? ` What sets it apart is ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.` : "";
+    const closer = topCon
+      ? ` It's best for ${product.bestFor.toLowerCase()}, though traders should note that ${topCon.charAt(0).toLowerCase()}${topCon.slice(1)}.`
+      : ` It's best for ${product.bestFor.toLowerCase()}.`;
+    return opener + middle + closer;
+  }
+
+  // Opening sentence — anchor on the headline number (APY or bonus) when available
+  if (product.apy && product.bonus) {
+    parts.push(
+      `${product.name} pairs ${product.apy} APY with ${product.bonus}, positioning it as a competitive option in the ${product.subcategory.toLowerCase()} category.`
+    );
+  } else if (product.apy) {
+    parts.push(
+      `${product.name} offers ${product.apy} APY in the ${product.subcategory.toLowerCase()} category, backed by ${product.provider}.`
+    );
+  } else if (product.bonus) {
+    parts.push(
+      `${product.name} leads with a ${product.bonus} offer, making it a notable choice in the ${product.subcategory.toLowerCase()} space.`
+    );
+  } else {
+    parts.push(
+      `${product.name} from ${product.provider} is a ${product.subcategory.toLowerCase()} product built for ${product.bestFor.toLowerCase()}.`
+    );
+  }
+
+  // Middle sentence — fees + minimum + top strength
+  const feeMin: string[] = [];
+  if (product.fees && product.fees !== "$0/month") {
+    feeMin.push(`a ${product.fees} fee structure`);
+  } else if (product.fees === "$0/month") {
+    feeMin.push("no monthly fees");
+  }
+  if (product.minDeposit && product.minDeposit !== "$0") {
+    feeMin.push(`a ${product.minDeposit} minimum to open`);
+  } else if (product.minDeposit === "$0") {
+    feeMin.push("no minimum to open");
+  }
+  const topPro = product.pros[0];
+  if (feeMin.length && topPro) {
+    parts.push(
+      `With ${feeMin.join(" and ")}, the account stands out for ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.`
+    );
+  } else if (topPro) {
+    parts.push(`Its strongest attribute is ${topPro.charAt(0).toLowerCase()}${topPro.slice(1)}.`);
+  }
+
+  // Closing sentence — best-for + a measured caveat from cons
+  const topCon = product.cons[0];
+  if (topCon) {
+    parts.push(
+      `It's best suited for ${product.bestFor.toLowerCase()}, though prospective customers should weigh that ${topCon.charAt(0).toLowerCase()}${topCon.slice(1)}.`
+    );
+  } else {
+    parts.push(`It's best suited for ${product.bestFor.toLowerCase()}.`);
+  }
+
+  return parts.join(" ");
+}
+
+export function ClarityResearch({ product }: { product: Product }) {
+  const text = handTunedCommentary[product.slug] || buildDynamicCommentary(product);
 
   const date = "Apr 22, 2025";
 
@@ -234,10 +357,96 @@ function getBankingFeatures(product: Product) {
   return { accountTypes, features };
 }
 
+// --- Crypto-specific feature blocks ---
+function CryptoResearchBlocks({ product }: { product: Product }) {
+  const accountTypes = (product.accountTypes ?? []).map((label) => ({ label, available: true }));
+  const assets = (product.assetsAvailable ?? []).map((label) => ({ label, available: true }));
+  const features = (product.platformFeatures ?? []).map((label) => ({ label, available: true }));
+
+  return (
+    <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-5">
+      <div className="grid md:grid-cols-2 gap-2 sm:gap-3">
+        {accountTypes.length > 0 && (
+          <FeatureCard icon="[=]" title="Account Types" items={accountTypes} />
+        )}
+        {assets.length > 0 && (
+          <FeatureCard icon="[A]" title="Assets Available" items={assets} />
+        )}
+      </div>
+      {features.length > 0 && (
+        <FeatureCard icon="[P]" title="Platform Features" items={features} columns={2} />
+      )}
+      <div className="border border-[#e4d9cf] rounded p-2 sm:p-3.5 bg-white">
+        <div className="flex items-center gap-1 sm:gap-1.5 mb-2 sm:mb-2.5">
+          <span className="text-[#0e4d45] text-xs sm:text-sm font-bold">$</span>
+          <span className="text-[10px] sm:text-[11px] font-bold text-black uppercase tracking-widest">Fee & Asset Snapshot</span>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
+          <div>
+            <div className="text-black/50 mb-0.5">Trading Fees</div>
+            <div className="font-bold text-black">{product.fees}</div>
+          </div>
+          <div>
+            <div className="text-black/50 mb-0.5">Min Deposit</div>
+            <div className="font-bold text-black">{product.minDeposit}</div>
+          </div>
+          {product.numCryptoAssets && (
+            <div>
+              <div className="text-black/50 mb-0.5">Coins Listed</div>
+              <div className="font-bold text-[#0e4d45]">{product.numCryptoAssets}</div>
+            </div>
+          )}
+          {product.bonus && (
+            <div>
+              <div className="text-black/50 mb-0.5">Bonus</div>
+              <div className="font-bold text-black">{product.bonus}</div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // --- Main Research Blocks Component ---
 export function ResearchBlocks({ product }: { product: Product }) {
   const isInvesting = product.category === "investing";
   const isBanking = product.category === "bank";
+  const isCrypto = product.subcategory === "Crypto";
+
+  if (isCrypto) {
+    return <CryptoResearchBlocks product={product} />;
+  }
+
+  if (isInvesting && (product.accountTypes?.length || product.assetsAvailable?.length || product.platformFeatures?.length)) {
+    const accountTypes = (product.accountTypes ?? []).map((label) => ({ label, available: true }));
+    const assets = (product.assetsAvailable ?? []).map((label) => ({ label, available: true }));
+    const platform = (product.platformFeatures ?? []).map((label) => ({ label, available: true }));
+    const marginRate = product.slug === "robinhood" ? "5.75% - 11.75% (Gold)" : product.slug === "fidelity" ? "5.83% - 12.58%" : product.slug === "interactive-brokers" ? "As low as 5.83%" : product.slug === "charles-schwab" ? "11.50% - 13.25%" : product.slug === "vanguard" ? "10.75% - 12.75%" : product.slug === "webull" || product.slug === "moomoo" ? "6.99% - 9.74%" : product.slug === "sofi-invest" ? "11.00%" : product.slug === "etrade-invest" ? "11.20% - 13.20%" : "varies";
+    const feeStr = product.fees;
+
+    return (
+      <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-5">
+        <div className="grid md:grid-cols-2 gap-2 sm:gap-3">
+          {accountTypes.length > 0 && <FeatureCard icon="[=]" title="Account Types" items={accountTypes} columns={2} />}
+          {assets.length > 0 && <FeatureCard icon="[A]" title="Assets Available" items={assets} columns={2} />}
+        </div>
+        {platform.length > 0 && <FeatureCard icon="[P]" title="Platform Features" items={platform} columns={2} />}
+        <div className="border border-[#e4d9cf] rounded p-2 sm:p-3.5 bg-white">
+          <div className="flex items-center gap-1 sm:gap-1.5 mb-2 sm:mb-2.5">
+            <span className="text-[#0e4d45] text-xs sm:text-sm font-bold">$</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-black uppercase tracking-widest">Fee & Account Snapshot</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
+            <div><div className="text-black/50 mb-0.5">Trading Fees</div><div className="font-bold text-black">{feeStr}</div></div>
+            <div><div className="text-black/50 mb-0.5">Margin Rate</div><div className="font-bold text-black">{marginRate}</div></div>
+            <div><div className="text-black/50 mb-0.5">Account Min</div><div className="font-bold text-black">{product.minDeposit}</div></div>
+            {product.bonus && <div><div className="text-black/50 mb-0.5">Bonus</div><div className="font-bold text-[#0e4d45]">{product.bonus}</div></div>}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (isInvesting) {
     const { accountTypes, researchTools, assets, platform } = getInvestingFeatures(product);

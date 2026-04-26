@@ -5,35 +5,35 @@ import { ProductLogo, StarRating } from "@/components/product-card";
 const TOP_OFFERS = [
   {
     slug: "sofi-checking-savings",
-    headline: "Earn 4.60% APY",
-    sub: "No monthly fees. FDIC insured up to $2M.",
+    headline: "Earn 4.00% APY",
+    sub: "$400 welcome bonus. No monthly fees. FDIC insured up to $3M.",
     cta: "Open Account",
   },
   {
-    slug: "ally-online-savings",
-    headline: "4.20% APY + Buckets",
-    sub: "No minimums, 24/7 support.",
+    slug: "cit-platinum-savings",
+    headline: "Up to 4.10% APY",
+    sub: "0.35% APY Boost on balances of $5,000+. FDIC insured.",
     cta: "See Offer",
   },
   {
-    slug: "marcus-high-yield",
-    headline: "Goldman Sachs Savings",
-    sub: "4.40% APY. Same-day transfers.",
+    slug: "bread-savings",
+    headline: "4.00% APY, No Fees",
+    sub: "Strong rate with top-tier CD lineup alongside.",
     cta: "See Offer",
   },
 ];
 
 const RATES_BY_TYPE = [
-  { label: "High-Yield Savings", value: "4.60%", avg: "0.45%", up: true },
+  { label: "High-Yield Savings", value: "4.10%", avg: "0.45%", up: true },
   { label: "Checking (rewards)", value: "4.00%", avg: "0.07%", up: true },
   { label: "Money Market", value: "4.25%", avg: "0.60%", up: false },
-  { label: "12-Month CD", value: "4.75%", avg: "1.82%", up: true },
+  { label: "12-Month CD", value: "3.75%", avg: "1.82%", up: true },
 ];
 
 const SAVINGS_COMPARE = [
-  { name: "SoFi Savings", apy: "4.60%", fees: "$0", min: "$0" },
-  { name: "Marcus", apy: "4.40%", fees: "$0", min: "$0" },
-  { name: "Ally Savings", apy: "4.20%", fees: "$0", min: "$0" },
+  { name: "CIT Platinum", apy: "4.10%", fees: "$0", min: "$100" },
+  { name: "SoFi Savings", apy: "4.00%", fees: "$0", min: "$0" },
+  { name: "Bread Savings", apy: "4.00%", fees: "$0", min: "$100" },
   { name: "Chase Savings", apy: "0.01%", fees: "$5", min: "$300" },
 ];
 

@@ -512,18 +512,21 @@ function EditorialFooter() {
 
   const relatedGuides = [
     {
+      slug: "how-to-pick-high-yield-savings",
       category: "BANKING",
       time: "6 min",
       title: "How to Choose a High-Yield Savings Account",
       desc: "Learn what makes a great savings account and how to compare APYs, minimums, and insurance coverage.",
     },
     {
+      slug: "savings-account-timeline",
       category: "BANKING",
       time: "4 min",
-      title: "How FDIC Insurance Works",
-      desc: "Understand exactly how much of your money is protected and how to maximize your coverage across accounts.",
+      title: "Savings Account Timeline",
+      desc: "A step-by-step plan for building your savings and choosing the right account at every stage.",
     },
     {
+      slug: "best-bank-bonuses-this-month",
       category: "BANKING",
       time: "8 min",
       title: "Best Bank Bonuses This Month",
@@ -606,7 +609,7 @@ function EditorialFooter() {
         </div>
         <div className="mt-4 grid sm:grid-cols-3 gap-3">
           {relatedGuides.map((g) => (
-            <div key={g.title} className="bg-white border border-[#d4c5b8] rounded-sm shadow-sm p-4 flex flex-col">
+            <div key={g.slug} className="bg-white border border-[#d4c5b8] rounded-sm shadow-sm p-4 flex flex-col">
               <div className="flex items-center justify-between mb-3">
                 <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#0e4d45]">{g.category}</div>
                 <div className="text-[10px] text-[#5a5a5a]">{g.time}</div>
@@ -615,7 +618,8 @@ function EditorialFooter() {
               <p className="text-[11px] text-[#5a5a5a] leading-snug flex-1">{g.desc}</p>
               <div className="mt-4 grid grid-cols-2 gap-1.5">
                 <Link
-                  to="/guides"
+                  to="/guides/$articleId"
+                  params={{ articleId: g.slug }}
                   className="text-center px-2 py-1.5 rounded-sm bg-[#0e4d45] text-[#fef6f1] text-[10px] font-semibold uppercase tracking-wider hover:bg-[#0a3832] transition-colors"
                 >
                   Read Guide
@@ -720,8 +724,8 @@ function BankAccounts() {
           {/* Stats */}
           <div className="mt-5 grid grid-cols-3 gap-2 max-w-lg">
             {[
-              { label: "Accounts reviewed", value: "24" },
-              { label: "Top APY", value: "4.60%" },
+              { label: "Accounts reviewed", value: "29" },
+              { label: "Top APY", value: "4.10%" },
               { label: "Avg. bonus", value: "$200" },
             ].map((s) => (
               <div key={s.label} className="bg-white border border-[#e4d9cf] rounded-sm p-3">
@@ -735,7 +739,7 @@ function BankAccounts() {
           <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 text-[11px] border border-[#e4d9cf] rounded-sm bg-white px-3 sm:px-4 py-2.5 max-w-2xl">
             <div className="flex items-center gap-1.5">
               <span className="text-[9px] font-bold uppercase tracking-wider text-[#5a5a5a]">Fed Rate</span>
-              <span className="font-serif font-bold text-black">4.50%</span>
+              <span className="font-serif font-bold text-black">3.50%&ndash;3.75%</span>
             </div>
             <div className="w-px bg-[#e4d9cf]" />
             <div className="flex items-center gap-1.5">
@@ -745,7 +749,7 @@ function BankAccounts() {
             <div className="w-px bg-[#e4d9cf]" />
             <div className="flex items-center gap-1.5">
               <span className="text-[9px] font-bold uppercase tracking-wider text-[#5a5a5a]">Top Rate Here</span>
-              <span className="font-serif font-bold text-[#0e4d45]">4.60%</span>
+              <span className="font-serif font-bold text-[#0e4d45]">4.10%</span>
             </div>
             <div className="w-px bg-[#e4d9cf]" />
             <div className="flex items-center gap-1.5">

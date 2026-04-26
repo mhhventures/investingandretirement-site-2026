@@ -7,7 +7,7 @@ const TRUSTED = products.filter((p) => p.editorsPick).slice(0, 4);
 const TOP_OFFERS = [
   {
     slug: "sofi-checking-savings",
-    headline: "Earn 4.60% APY",
+    headline: "Earn 4.00% APY",
     sub: "No monthly fees. FDIC insured.",
     cta: "Open Account",
   },
@@ -33,9 +33,9 @@ const CURRENT_RATES = [
 ];
 
 const SAVINGS_COMPARE = [
-  { name: "SoFi Savings", apy: "4.60%", bonus: "$300" },
-  { name: "Marcus", apy: "4.40%", bonus: "None" },
-  { name: "Ally Savings", apy: "4.25%", bonus: "None" },
+  { name: "SoFi Savings", apy: "4.00%", bonus: "$400" },
+  { name: "Marcus", apy: "3.50%", bonus: "None" },
+  { name: "Ally Savings", apy: "3.10%", bonus: "None" },
   { name: "Chase Savings", apy: "0.01%", bonus: "$300" },
 ];
 
