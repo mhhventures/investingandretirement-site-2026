@@ -88,6 +88,28 @@ export const guides: GuideArticle[] = [
           body: "Pull your last month of bank and credit card statements. Categorize every transaction into Needs, Wants, or Savings. The gap between where you are and 50/30/20 is your starting point.",
         },
       },
+      {
+        heading: "A Sample 50/30/20 Budget for $60,000 Income",
+        paragraphs: [
+          "Take-home pay on a $60,000 salary is roughly $4,000/month after federal, state, FICA, and standard 401(k) contributions. Here is exactly how the rule plays out in dollar terms — useful as a sanity check against your own budget.",
+        ],
+        bullets: [
+          "Needs ($2,000/mo) — rent $1,300, utilities $150, groceries $350, gas/insurance $200.",
+          "Wants ($1,200/mo) — dining $300, streaming $50, hobbies/entertainment $400, shopping $250, gym $50, misc $150.",
+          "Savings & Debt ($800/mo) — Roth IRA $500, HYSA emergency fund $200, extra debt payoff $100.",
+          "At this rate, the Roth IRA alone hits $6,000/year — close to the annual contribution limit for tax-free growth.",
+        ],
+      },
+      {
+        heading: "Common Pitfalls That Quietly Break the Budget",
+        bullets: [
+          "Counting employer 401(k) match as your 20% — it is bonus money, not your contribution.",
+          "Treating minimum debt payments as savings — minimums are a Need, only EXTRA debt payoff counts toward the 20%.",
+          "Lumping subscriptions into Needs — Netflix and Spotify are Wants, not utilities.",
+          "Forgetting irregular expenses — annual insurance premiums, holiday gifts, and car maintenance need a sinking fund line, or they blow up a single month.",
+          "Reviewing only once a year — the rule works because of monthly course-correction, not annual reckoning.",
+        ],
+      },
     ],
     keyTakeaways: [
       "Allocate 50% needs, 30% wants, 20% savings and debt payoff.",
@@ -107,6 +129,14 @@ export const guides: GuideArticle[] = [
       {
         q: "Does a 401(k) match count toward the 20%?",
         a: "Your own contribution counts. The employer match is a bonus on top.",
+      },
+      {
+        q: "How do I budget with irregular income?",
+        a: "Average your last 12 months of net income and use that as your baseline. In high-income months, sweep the surplus into a buffer account — drain it on low-income months. Most freelancers also pad needs to 55-60% to absorb volatility.",
+      },
+      {
+        q: "Should I budget gross including pre-tax deductions?",
+        a: "No. Use what hits your bank account. Pre-tax 401(k) and HSA contributions never feel spendable, so excluding them keeps the percentages honest.",
       },
     ],
   },
@@ -370,6 +400,28 @@ export const guides: GuideArticle[] = [
           body: "Do not invest another dollar in anything risky until your starter $1,000 is in place. Missing a 401(k) match is the one exception — take the match, then race to finish the emergency fund.",
         },
       },
+      {
+        heading: "What Counts as 'Essential Expenses'",
+        paragraphs: [
+          "The biggest mistake people make sizing their emergency fund is using their TOTAL monthly spending. The right number is your bare-bones survival budget — what you'd spend in a true crisis with no discretionary spending.",
+        ],
+        bullets: [
+          "Include — rent/mortgage, utilities, groceries (not dining), insurance premiums, minimum debt payments, transportation to work, phone.",
+          "Exclude — restaurants, entertainment, subscriptions, vacations, hobbies, retirement contributions, gym memberships.",
+          "For a typical household spending $5,000/mo total, essential expenses are usually $3,000-$3,500. That means 6 months of essentials is $18,000-$21,000, not $30,000.",
+          "This distinction often cuts the target fund size by 30-40% — making the goal much more achievable.",
+        ],
+      },
+      {
+        heading: "Common Emergency Fund Mistakes",
+        bullets: [
+          "Keeping it at the same bank as your checking — too easy to 'borrow' for non-emergencies. Use a separate online HYSA.",
+          "Investing it in stocks for higher returns — emergencies tend to coincide with market crashes. You'd take a 30% loss right when you need the cash.",
+          "Tapping it for predictable expenses — car registration, holiday gifts, and annual insurance premiums are not emergencies. Use sinking funds for those.",
+          "Never refilling after a withdrawal — once you use it, the next 60 days should be focused entirely on rebuilding it.",
+          "Letting it sit at 0.01% APY — at 4.5% APY, a $20,000 emergency fund earns $900/year. Switch banks if your rate is below 4%.",
+        ],
+      },
     ],
     keyTakeaways: [
       "Start with a $1,000 baseline, then build to 3-6 months of expenses.",
@@ -477,6 +529,23 @@ export const guides: GuideArticle[] = [
         ],
       },
       {
+        heading: "The Power of Compound Interest",
+        paragraphs: [
+          "Compound interest is the most important concept in investing. It is interest earned on interest — your gains generate their own gains, and the curve gets steeper every year. Albert Einstein reportedly called it the eighth wonder of the world.",
+          "A simple example: $10,000 invested at a 7% real annual return becomes $19,672 in 10 years, $38,697 in 20 years, and $76,123 in 30 years. The first 10 years add ~$10K. The third decade alone adds ~$37K — almost 4x as much, with no additional contribution.",
+        ],
+        bullets: [
+          "$300/month invested from age 25 to 65 at 7% = $787,000.",
+          "$300/month invested from age 35 to 65 at 7% = $367,000.",
+          "That 10-year delay costs $420,000 — more than 2x what the early starter actually contributed.",
+          "The Rule of 72: divide 72 by your return rate to find how long it takes to double your money. At 7%, money doubles every ~10 years.",
+        ],
+        callout: {
+          title: "The Time Tax",
+          body: "Every year you delay starting is mathematically the most expensive year of your investing life. The dollars contributed in your 20s do more work than dollars contributed at any other age.",
+        },
+      },
+      {
         heading: "Understanding Real Risk",
         paragraphs: [
           "Risk is not just 'can I lose money?' — it is the probability and size of loss given your time horizon. Over any 1-year period, stocks have lost money about 25% of the time. Over any 20-year period, they have never lost money (inflation-adjusted). Your time horizon is the most important risk factor.",
@@ -502,6 +571,14 @@ export const guides: GuideArticle[] = [
       {
         q: "Should I buy individual stocks?",
         a: "Usually no. Over 80% of individual stock pickers underperform a simple S&P 500 index fund over 10+ years.",
+      },
+      {
+        q: "What's the difference between price and total return?",
+        a: "Price return ignores dividends. Total return includes them. Over the past century, dividends have accounted for roughly 40% of the S&P 500's total return — never compare investments on price alone.",
+      },
+      {
+        q: "How do I handle a market crash emotionally?",
+        a: "Have a written investment policy statement BEFORE the crash. Say: 'I will not sell during downturns. I will continue contributing monthly.' Read it during corrections. The investors who panic-sell typically lock in 30-40% losses while disciplined investors break even within 18-24 months.",
       },
     ],
   },
@@ -595,6 +672,32 @@ export const guides: GuideArticle[] = [
           title: "Keep It Simple",
           body: "A target-date retirement fund holds stocks, bonds, and international exposure in one fund, and automatically rebalances as you age. For 80% of investors, that one fund is enough.",
         },
+      },
+      {
+        heading: "How Allocation Changes Returns and Volatility",
+        paragraphs: [
+          "Historical data (1970-2024) shows just how much asset allocation drives outcomes. The differences are dramatic over a 30-year time horizon — and the worst single-year loss is what causes most investors to panic-sell.",
+        ],
+        bullets: [
+          "100% Stocks — ~10.2% avg annual return, worst year -37% (2008). Best for 30+ year horizons.",
+          "80/20 Stocks/Bonds — ~9.5% avg return, worst year -29%. Classic 'aggressive' allocation.",
+          "60/40 Stocks/Bonds — ~8.7% avg return, worst year -20%. The benchmark balanced portfolio.",
+          "40/60 Stocks/Bonds — ~7.5% avg return, worst year -12%. Suitable approaching retirement.",
+          "20/80 Stocks/Bonds — ~6.2% avg return, worst year -6%. Capital preservation focus.",
+          "On a $100K portfolio over 30 years at these returns: 100% stocks → $1.87M, 60/40 → $1.23M, 20/80 → $612K. The cost of being too conservative early is enormous.",
+        ],
+      },
+      {
+        heading: "Tax Location: Where to Hold What",
+        paragraphs: [
+          "Once you have multiple account types (taxable + IRA + 401k), WHERE you hold each asset matters as much as what you own. The rule of thumb: hold tax-inefficient assets (bonds, REITs, actively managed funds) in tax-advantaged accounts, and tax-efficient assets (broad-market index ETFs) in taxable accounts.",
+        ],
+        bullets: [
+          "Taxable brokerage → US/international stock index ETFs (VTI, VXUS), municipal bonds.",
+          "Roth IRA → highest expected-return assets (small-cap, emerging markets) — tax-free forever.",
+          "Traditional 401(k)/IRA → taxable bonds, REITs, anything that throws off ordinary income.",
+          "This single optimization can add 0.3-0.7% per year to after-tax returns — over 30 years, that's hundreds of thousands of dollars.",
+        ],
       },
     ],
     keyTakeaways: [
@@ -697,6 +800,24 @@ export const guides: GuideArticle[] = [
         ],
       },
       {
+        heading: "Savings Benchmarks by Age",
+        paragraphs: [
+          "Fidelity's widely-cited benchmarks give you a quick gut-check on whether you're on track. They assume you save 15% annually starting at 25 and retire at 67.",
+        ],
+        bullets: [
+          "By age 30 — 1x your annual salary saved.",
+          "By age 40 — 3x your annual salary saved.",
+          "By age 50 — 6x your annual salary saved.",
+          "By age 60 — 8x your annual salary saved.",
+          "By age 67 — 10x your annual salary saved.",
+          "Behind these numbers? Don't panic. Bumping savings rate from 10% to 20% closes the gap faster than market returns ever will.",
+        ],
+        callout: {
+          title: "What If You Started Late?",
+          body: "A 45-year-old with $50K saved who starts contributing $1,500/month at 7% returns hits $1.1M by age 65. Late starts work — they just require a higher savings rate and discipline.",
+        },
+      },
+      {
         heading: "The Priority Order",
         bullets: [
           "1. 401(k) up to employer match — this is a 50-100% instant return.",
@@ -733,6 +854,14 @@ export const guides: GuideArticle[] = [
       {
         q: "Can I retire early?",
         a: "Yes if you save aggressively. The FIRE movement targets 25-30x expenses to retire 10-20 years early. It requires a savings rate of 40-60% of income.",
+      },
+      {
+        q: "What's the difference between a 401(k) and an IRA?",
+        a: "A 401(k) is offered by your employer with much higher contribution limits ($23,500 in 2026 vs $7,000 for an IRA) and often an employer match. An IRA is opened independently at any brokerage and gives you broader investment choices. Most people use both — 401(k) for the match and IRA for the better fund options.",
+      },
+      {
+        q: "What is a Mega Backdoor Roth?",
+        a: "An advanced strategy for high earners whose 401(k) plans allow after-tax contributions and in-service rollovers. You contribute up to ~$46,000 of after-tax dollars annually (above the standard $23,500 limit), then immediately roll them to a Roth account for tax-free growth. Only ~40% of plans support it — check your plan documents.",
       },
     ],
   },
@@ -788,6 +917,29 @@ export const guides: GuideArticle[] = [
           title: "The Honest Reality",
           body: "Roughly 70-90% of active retail traders lose money over 5+ years. If you trade, size your trading account as a small slice of total net worth and keep the bulk of your money in boring index funds.",
         },
+      },
+      {
+        heading: "Position Sizing: The Math That Keeps You Alive",
+        paragraphs: [
+          "Position sizing is the link between your stop loss and your account risk. Get it right, and you can be wrong 50% of the time and still profit. Get it wrong, and one bad trade ends your trading career.",
+          "The formula: Position Size = (Account × Risk%) ÷ (Entry Price - Stop Price). Example: $50,000 account, 1% risk ($500), buy at $100, stop at $95 ($5 risk per share). Position size = $500 ÷ $5 = 100 shares ($10,000 position). If stopped out, you lose exactly $500 — 1% of your account.",
+        ],
+        bullets: [
+          "Never let position size exceed 20% of total account, even if math allows — concentration risk.",
+          "After 3 consecutive losses, cut position size in half until you have a winner.",
+          "Track your win rate AND your average win-to-loss ratio. A 40% win rate with 3:1 R:R is profitable; an 80% win rate with 1:3 R:R is bankruptcy.",
+        ],
+      },
+      {
+        heading: "Common Trader Mistakes That Drain Accounts",
+        bullets: [
+          "Revenge trading — trying to win back losses by sizing up. Locks in the worst sequence of trades.",
+          "Moving stop losses further away to avoid being stopped out — turns small losses into account-killers.",
+          "Adding to losing positions ('averaging down') without a defined plan — works until it doesn't, then takes you out.",
+          "Trading too many setups — every strategy works in some market regime, none work in all of them.",
+          "Ignoring commissions and slippage on small accounts — $7 round-trip costs are 1.4% on a $500 trade.",
+          "Not separating trading capital from living expenses — the moment you NEED to make money, you stop trading well.",
+        ],
       },
     ],
     keyTakeaways: [
@@ -878,6 +1030,28 @@ export const guides: GuideArticle[] = [
           "Clear, published rate history — not just a promotional splash.",
         ],
       },
+      {
+        heading: "What That 0.25% Difference Actually Means",
+        paragraphs: [
+          "The yield gap between the top HYSAs and second-tier accounts is usually 0.25-0.50%. On small balances that is a few dollars a year. On large balances it is real money — but it is also frequently smaller than the cost of switching banks if your current setup has automation, bill pay, and direct deposit linked to it.",
+        ],
+        bullets: [
+          "$5,000 balance × 0.25% gap = $12.50/year. Not worth switching for.",
+          "$25,000 balance × 0.25% gap = $62.50/year. Worth switching if onboarding takes < 30 minutes.",
+          "$100,000 balance × 0.50% gap = $500/year. Always worth switching.",
+          "$250,000 balance × 0.50% gap = $1,250/year. Switch and split across two banks.",
+        ],
+      },
+      {
+        heading: "Avoid the Rate-Chasing Trap",
+        paragraphs: [
+          "It is tempting to switch banks every time a competitor advertises a slightly higher promo APY. Don't. Most teaser rates revert to mid-pack levels within 6 months, and you waste an hour or two on each switch. The smarter strategy: pick one bank with a long track record of competitive rates (Marcus, Ally, Discover, Capital One 360) and only switch if your current rate falls more than 0.5% below the top ongoing rate for two consecutive months.",
+        ],
+        callout: {
+          title: "The Hidden Cost of Promo Rates",
+          body: "Banks that offer 5.5% APY for 3 months then drop to 3.5% are betting on inertia — most customers don't notice and stick around. If you're going to chase a promo, calendar the day it expires and be ready to move.",
+        },
+      },
     ],
     keyTakeaways: [
       "Pick an HYSA with 4%+ APY, zero fees, and FDIC insurance.",
@@ -942,6 +1116,19 @@ export const guides: GuideArticle[] = [
         paragraphs: [
           "Roth IRA contributions phase out above $146,000 (single) or $230,000 (married) in 2024. Above those limits, direct Roth contributions are not allowed — but the Backdoor Roth strategy remains available.",
           "Traditional IRA deductions phase out at much lower income levels if you or your spouse is covered by a workplace retirement plan. You can still contribute to a non-deductible Traditional IRA at any income.",
+        ],
+      },
+      {
+        heading: "Real Numbers: How Much the Choice Actually Matters",
+        paragraphs: [
+          "Plug real numbers in and the answer becomes obvious in most cases. Assume $7,000/year contributed for 30 years at 7% returns = $660,000 at retirement.",
+        ],
+        bullets: [
+          "Scenario A — Currently 22% bracket, retire in 22% bracket: Roth and Traditional produce IDENTICAL after-tax wealth. Coin flip.",
+          "Scenario B — Currently 12% bracket, retire in 22% bracket: Roth wins by ~$66,000 after tax. Younger workers usually win here.",
+          "Scenario C — Currently 32% bracket, retire in 22% bracket: Traditional wins by ~$66,000 after tax. High earners near retirement usually win here.",
+          "Scenario D — Currently 24% bracket, retire in 12% bracket (downsize, low-cost area): Traditional wins by ~$80,000.",
+          "The wider the gap between current and future tax rates, the more the choice matters. Same rate? Mathematically a wash.",
         ],
       },
       {
@@ -1039,6 +1226,20 @@ export const guides: GuideArticle[] = [
           title: "Fastest Win",
           body: "Dropping utilization from 60% to under 10% can add 40-60 points in a single reporting cycle. This is the single biggest lever most people have.",
         },
+      },
+      {
+        heading: "What Each Score Range Means for Borrowing",
+        paragraphs: [
+          "Knowing your score's tier matters more than the exact number — lenders price loans in bands. Moving from one tier to the next is what saves real money.",
+        ],
+        bullets: [
+          "800+ (Exceptional) — Best rates available. ~21% of Americans.",
+          "740-799 (Very Good) — Qualifies for nearly all best rates. Typical mortgage rate 0.25-0.5% above 800+.",
+          "670-739 (Good) — Approved for most products at average rates.",
+          "580-669 (Fair) — Approved for many products but at noticeably higher rates. 30-yr mortgage rate ~1-1.5% higher than 740+.",
+          "Below 580 (Poor) — Limited approvals, often subprime rates. Auto loan APRs 15-20%+ vs 6-7% for prime borrowers.",
+          "Real cost example — a 670 score vs a 740 score on a $400K mortgage costs ~$60,000 more in interest over 30 years.",
+        ],
       },
       {
         heading: "Weeks 5-8: Add Positive History",
@@ -2862,6 +3063,288 @@ export const guides: GuideArticle[] = [
       {
         q: "How often is this list updated?",
         a: "We refresh this ranking regularly to reflect changes in fees, supported assets, staking yields, and the U.S. regulatory landscape. The next major update is planned for late 2026.",
+      },
+    ],
+  },
+  {
+    slug: "hysa-vs-money-market-vs-cds",
+    title: "HYSA vs Money Market vs CDs: Where to Park Your Cash",
+    category: "Saving Money",
+    readTime: "8 min",
+    description:
+      "High-yield savings, money market accounts, and CDs all pay strong interest in 2026 — but they serve very different jobs. Here is how to choose.",
+    relatedCategory: "/bank-accounts",
+    relatedLabel: "Compare Bank Accounts",
+    intro:
+      "With APYs above 4% across the board, parking cash has never paid better. But high-yield savings accounts (HYSAs), money market accounts (MMAs), and certificates of deposit (CDs) are not interchangeable. Each has different access rules, rate structures, and ideal use cases. Picking the wrong one can cost you flexibility, yield, or both. Here is exactly how to match the right account to the right dollar.",
+    sections: [
+      {
+        heading: "The 30-Second Summary",
+        bullets: [
+          "HYSA — best for emergency funds and flexible savings. Variable rate, fully liquid, no term commitment.",
+          "Money Market — best for larger balances that need check-writing or debit access. Variable rate, often tiered.",
+          "CDs — best for money you will not need for a fixed period (3 months to 5 years). Fixed rate, locked term, early withdrawal penalty.",
+        ],
+        callout: {
+          title: "Quick Rule of Thumb",
+          body: "Emergency fund → HYSA. Large cash buffer with check access → MMA. Money earmarked for a known future expense → CD that matures right before you need it.",
+        },
+      },
+      {
+        heading: "High-Yield Savings (HYSA)",
+        paragraphs: [
+          "HYSAs are the workhorse of personal finance. They pay 10-15x the national average, charge no fees at top online banks, and let you transfer money in and out via ACH within 1-3 business days. The rate is variable — it moves with the Fed — but for emergency funds and short-term savings, that flexibility is worth more than locking in a fixed rate.",
+        ],
+        bullets: [
+          "Typical APY (2026): 3.8% to 4.5%",
+          "Access: ACH transfer (1-3 days), some offer linked debit cards",
+          "FDIC insured up to $250,000 per depositor, per bank",
+          "No term commitment, no early withdrawal penalty",
+          "Best for: emergency fund, short-term savings goals, cash buffer",
+        ],
+      },
+      {
+        heading: "Money Market Accounts (MMA)",
+        paragraphs: [
+          "Money market accounts blend savings and checking features. They typically pay slightly less than the top HYSAs but offer perks like check-writing, debit cards, and tiered rates that reward larger balances. MMAs make the most sense if you keep more than $25,000 in cash and want easier access without giving up much yield.",
+        ],
+        bullets: [
+          "Typical APY (2026): 3.5% to 4.3%, often tiered by balance",
+          "Access: checks, debit card, ACH — more flexible than HYSA",
+          "FDIC insured (banks) or NCUA insured (credit unions)",
+          "Some require $1,000-$10,000 minimums to earn the top tier",
+          "Best for: high cash balances, retirees, business operating cash",
+        ],
+        callout: {
+          title: "HYSA vs MMA — The Honest Take",
+          body: "For most people, a top-tier HYSA wins. MMAs are worth it only if you genuinely use the check-writing or want a tiered rate boost on a six-figure balance.",
+        },
+      },
+      {
+        heading: "Certificates of Deposit (CDs)",
+        paragraphs: [
+          "CDs lock your money for a fixed term — anywhere from 3 months to 5 years — in exchange for a guaranteed fixed rate. The trade-off: pulling money out early triggers a penalty (typically 3-12 months of interest). When rates are expected to fall, CDs let you lock in today's APY before it disappears.",
+        ],
+        bullets: [
+          "Typical APY (2026): 4.0% to 5.0% on 6-12 month terms",
+          "Fixed rate — does not change for the duration of the term",
+          "Early withdrawal penalty: usually 3-6 months of interest on shorter CDs",
+          "FDIC insured up to $250,000",
+          "Best for: known future expenses (down payment in 18 months, tuition next year)",
+        ],
+      },
+      {
+        heading: "The CD Ladder Strategy",
+        paragraphs: [
+          "If you like the rate-lock of CDs but want some liquidity, build a ladder. Split your money into 5 equal CDs with terms of 1, 2, 3, 4, and 5 years. Each year one matures — you can either spend it or roll it into a new 5-year CD. After year 5, you have a 5-year CD maturing every year while still earning long-term rates.",
+        ],
+      },
+      {
+        heading: "How to Decide — A Simple Framework",
+        bullets: [
+          "Need it within 30 days? → HYSA",
+          "Need flexible access plus checks/debit? → MMA",
+          "Won't need it for 6+ months and want a rate lock? → CD",
+          "Worried rates will drop? → Lock in a CD now",
+          "Worried rates will rise? → Stay in HYSA, ride the variable rate up",
+        ],
+      },
+    ],
+    keyTakeaways: [
+      "HYSAs win for emergency funds and flexibility — variable rate, fully liquid.",
+      "MMAs are worth it only for large balances that need check or debit access.",
+      "CDs lock in today's rate but charge a penalty for early withdrawal.",
+      "Use a CD ladder to balance rate-lock with annual liquidity.",
+      "All three are FDIC insured up to $250,000 per depositor, per bank.",
+    ],
+    faqs: [
+      {
+        q: "Which pays the highest rate in 2026?",
+        a: "Short-term CDs (6-12 months) typically lead, followed by top HYSAs, then MMAs. The gap is usually 0.25% to 0.75% — meaningful only on larger balances.",
+      },
+      {
+        q: "Are CD rates worth the lock-up?",
+        a: "Yes when the Fed is expected to cut rates. No when rates are rising — you'd be locking in below-market yield. As of 2026, with rates near peak, locking a portion makes sense.",
+      },
+      {
+        q: "Can I lose money in any of these?",
+        a: "Not in nominal terms — all three are FDIC or NCUA insured up to $250,000. You can lose purchasing power if inflation outpaces your APY, but principal is protected.",
+      },
+      {
+        q: "Should I split between all three?",
+        a: "Many people do. A common setup: 3-6 months of expenses in an HYSA, larger cash reserves in an MMA, and known future expenses in CDs matched to the timeline.",
+      },
+    ],
+  },
+  {
+    slug: "index-funds-vs-etfs-vs-mutual-funds",
+    title: "Index Funds vs ETFs vs Mutual Funds Explained",
+    category: "Investing",
+    readTime: "9 min",
+    description:
+      "Three of the most popular ways to invest — and they are not interchangeable. Here is exactly how index funds, ETFs, and mutual funds differ, and which one fits your goals.",
+    relatedCategory: "/investing",
+    relatedLabel: "Compare Brokerages",
+    intro:
+      "Index funds, ETFs, and mutual funds are the three building blocks of nearly every modern portfolio. They all pool money from many investors to buy a basket of securities — but the way they trade, what they cost, and how they are taxed are meaningfully different. Picking the right wrapper for the right account can save you thousands over a lifetime.",
+    sections: [
+      {
+        heading: "The 30-Second Summary",
+        bullets: [
+          "Index Fund — a strategy (track an index passively). Can be packaged as a mutual fund or an ETF.",
+          "ETF (Exchange-Traded Fund) — trades like a stock all day, ultra-low fees, highly tax-efficient.",
+          "Mutual Fund — priced once per day after market close, can be active or passive, often higher fees.",
+        ],
+        callout: {
+          title: "The Key Insight Most People Miss",
+          body: "\"Index fund\" is not a separate category — it is a strategy. An S&P 500 index fund can be either a mutual fund (like VFIAX) or an ETF (like VOO). The wrapper changes how it trades and is taxed; the underlying holdings are identical.",
+        },
+      },
+      {
+        heading: "Side-by-Side Comparison",
+        productTable: {
+          title: "Index Funds vs ETFs vs Mutual Funds",
+          subtitle: "Real flagship products from major brokerages — apples-to-apples",
+          rows: [
+            {
+              rank: 1,
+              name: "Vanguard 500 Index ETF (VOO)",
+              provider: "ETF",
+              logoText: "V",
+              color: "#96151D",
+              apy: "0.03%",
+              apyNote: "expense ratio",
+              minDeposit: "1 share (~$500)",
+              monthlyFee: "$0",
+              bonus: "Trades all day",
+              bestFor: "Taxable accounts, active rebalancers, anyone wanting intraday pricing",
+              rating: 4.9,
+              ctaLabel: "Compare Brokers",
+              ctaUrl: "/investing",
+              editorsPick: true,
+            },
+            {
+              rank: 2,
+              name: "Vanguard 500 Index Fund (VFIAX)",
+              provider: "Index Mutual Fund",
+              logoText: "V",
+              color: "#96151D",
+              apy: "0.04%",
+              apyNote: "expense ratio",
+              minDeposit: "$3,000",
+              monthlyFee: "$0",
+              bonus: "Auto-invest fractional dollars",
+              bestFor: "401(k)s, IRAs, set-and-forget dollar-cost averaging",
+              rating: 4.8,
+              ctaLabel: "Compare Brokers",
+              ctaUrl: "/investing",
+            },
+            {
+              rank: 3,
+              name: "Fidelity ZERO Total Market (FZROX)",
+              provider: "Index Mutual Fund",
+              logoText: "F",
+              color: "#368727",
+              apy: "0.00%",
+              apyNote: "expense ratio",
+              minDeposit: "$0",
+              monthlyFee: "$0",
+              bonus: "True zero-fee fund",
+              bestFor: "Fidelity IRAs and Roth IRAs only (not portable)",
+              rating: 4.7,
+              ctaLabel: "Compare Brokers",
+              ctaUrl: "/investing",
+            },
+            {
+              rank: 4,
+              name: "SPDR S&P 500 ETF (SPY)",
+              provider: "ETF",
+              logoText: "S",
+              color: "#0066B3",
+              apy: "0.0945%",
+              apyNote: "expense ratio",
+              minDeposit: "1 share (~$540)",
+              monthlyFee: "$0",
+              bonus: "Highest liquidity",
+              bestFor: "Active traders, options strategies, institutional-grade liquidity",
+              rating: 4.6,
+              ctaLabel: "Compare Brokers",
+              ctaUrl: "/investing",
+            },
+            {
+              rank: 5,
+              name: "Fidelity Contrafund (FCNTX)",
+              provider: "Active Mutual Fund",
+              logoText: "F",
+              color: "#368727",
+              apy: "0.39%",
+              apyNote: "expense ratio",
+              minDeposit: "$0",
+              monthlyFee: "$0",
+              bonus: "Active management",
+              bestFor: "Investors who want a manager picking stocks (most underperform index)",
+              rating: 3.8,
+              ctaLabel: "Compare Brokers",
+              ctaUrl: "/investing",
+            },
+          ],
+        },
+      },
+      {
+        heading: "How They Actually Differ",
+        bullets: [
+          "Trading — ETFs trade all day at market price; mutual funds settle once after 4pm at NAV.",
+          "Minimums — ETFs require buying whole shares (or fractional at supportive brokers); mutual funds often have $0-$3,000 minimums.",
+          "Fees — passive index ETFs and index mutual funds both run 0.00%-0.10%; active mutual funds average 0.5%-1.0%.",
+          "Taxes — ETFs use an 'in-kind' creation/redemption process that almost never triggers capital gains. Mutual funds pass annual capital gains to all shareholders.",
+          "Auto-invest — Mutual funds let you DCA an exact dollar amount monthly. ETFs require fractional-share support (Fidelity, Schwab, Robinhood do; Vanguard does not).",
+        ],
+      },
+      {
+        heading: "Tax Efficiency — Why ETFs Win in Taxable Accounts",
+        paragraphs: [
+          "This is the single biggest reason advisors recommend ETFs for taxable brokerage accounts. When a mutual fund manager sells holdings to meet redemptions or rebalance, every shareholder gets a 1099-DIV at year-end with their share of the capital gain — even if you never sold a share. ETFs avoid this through in-kind redemptions, so you only pay tax when YOU sell.",
+          "In tax-advantaged accounts (401(k), IRA, Roth IRA), this difference does not matter — gains compound tax-free either way. That's why mutual funds remain popular in retirement plans.",
+        ],
+      },
+      {
+        heading: "How to Choose — A Simple Framework",
+        bullets: [
+          "Taxable brokerage account → ETF (VOO, VTI, SCHB) for tax efficiency",
+          "401(k) or IRA → either works; pick whatever your plan offers cheapest",
+          "Want to DCA exact dollar amounts → Mutual fund OR ETF at a fractional-share broker",
+          "Want intraday pricing or limit orders → ETF",
+          "Believe a manager can beat the market → Active mutual fund (but the data says ~85% underperform)",
+        ],
+        callout: {
+          title: "The Boring Truth",
+          body: "Over 20-year periods, roughly 85-90% of actively managed mutual funds underperform a simple S&P 500 index fund — and the few that win are nearly impossible to identify in advance. For most investors, a low-cost index ETF or index mutual fund is the right answer.",
+        },
+      },
+    ],
+    keyTakeaways: [
+      "Index funds are a strategy; ETFs and mutual funds are wrappers.",
+      "ETFs trade all day; mutual funds price once at 4pm market close.",
+      "ETFs are dramatically more tax-efficient in taxable accounts.",
+      "Index ETFs and index mutual funds both charge 0.00%-0.10% — fees are basically tied.",
+      "Active mutual funds underperform index funds ~85% of the time over 20+ years.",
+    ],
+    faqs: [
+      {
+        q: "Can I hold the same S&P 500 index as both a mutual fund and an ETF?",
+        a: "Yes. VFIAX (mutual fund) and VOO (ETF) hold identical securities. The choice is purely about how you want to trade and where you hold them.",
+      },
+      {
+        q: "Do ETFs have hidden costs mutual funds don't?",
+        a: "ETFs have a bid-ask spread (usually fractions of a cent on liquid funds like VOO). For long-term holders this is negligible. Day-traders should stick to high-volume ETFs to keep spreads tight.",
+      },
+      {
+        q: "What's the deal with Fidelity ZERO funds?",
+        a: "FZROX, FZILX, etc. charge a 0.00% expense ratio but only exist inside Fidelity accounts — you can't transfer them to another broker. Great for IRAs you'll never move; risky if you might switch brokerages.",
+      },
+      {
+        q: "Should I ever pick an active mutual fund?",
+        a: "Rarely. The data is brutal: most underperform after fees. If you go active, keep it under 10% of your portfolio and only in areas where active management has historically added value (small-cap, emerging markets).",
       },
     ],
   },

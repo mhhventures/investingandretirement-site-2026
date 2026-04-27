@@ -1729,21 +1729,6 @@ export const products: Product[] = [
     rating: 4.7,
     reviews: 6480,
     tagline: "All-in-one budgeting, net worth, and goal tracking built for couples and families.",
-    highlights: [
-      "Sync unlimited accounts across banks, brokerages, crypto, and real estate",
-      "Collaborative household budgeting with shared access for partners at no extra cost",
-      "Customizable dashboards, flexible category rules, and goal tracking",
-    ],
-    pros: [
-      "Widely considered the strongest Mint replacement since Mint shut down",
-      "Clean, modern interface with powerful customization",
-      "Free partner/household access — no separate subscription required",
-      "Strong investment tracking alongside budgeting",
-    ],
-    cons: [
-      "No free tier — paid subscription required after 7-day trial",
-      "Occasional account-sync hiccups (common across all aggregators)",
-    ],
     fees: "$14.99/mo or $99.99/yr",
     minDeposit: "Free 7-day trial",
     bonus: "50% off first year with annual plan",
@@ -1784,20 +1769,6 @@ export const products: Product[] = [
     rating: 4.5,
     reviews: 9120,
     tagline: "Find and cancel unwanted subscriptions, track spending, negotiate bills.",
-    highlights: [
-      "Automatic subscription detection and one-tap cancel",
-      "Bill negotiation service (keeps 30–60% of savings)",
-      "Net worth, spending, and cash flow dashboards",
-    ],
-    pros: [
-      "Free tier covers the core subscription tracker",
-      "Genuinely saves users money on recurring bills",
-      "Easy 2-minute bank sync setup",
-    ],
-    cons: [
-      "Premium upsells can feel pushy",
-      "Bill negotiation fee is a large share of savings",
-    ],
     fees: "Free / $4–$12 Premium",
     minDeposit: "Free",
     highlights: [
@@ -1835,20 +1806,6 @@ export const products: Product[] = [
     rating: 4.6,
     reviews: 4820,
     tagline: "Free net worth tracker and retirement planner (formerly Personal Capital).",
-    highlights: [
-      "Net worth tracking across all accounts",
-      "401(k) Fee Analyzer and Investment Checkup",
-      "Free retirement planner with Monte Carlo simulations",
-    ],
-    pros: [
-      "Comprehensive free financial dashboard",
-      "Institutional-grade analytics for retail users",
-      "Beautiful visualizations of spending and investments",
-    ],
-    cons: [
-      "Sales calls from Empower advisors for $100K+ portfolios",
-      "Budgeting features are lighter than YNAB or Rocket Money",
-    ],
     fees: "Free dashboard",
     minDeposit: "$0",
     highlights: [

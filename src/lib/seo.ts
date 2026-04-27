@@ -82,13 +82,19 @@ export function useSeo(config: SeoConfig) {
     setMeta("property", "og:url", fullUrl);
     setMeta("property", "og:type", type);
     setMeta("property", "og:image", image);
+    setMeta("property", "og:image:alt", config.title);
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
+    setMeta("property", "og:locale", "en_US");
     setMeta("property", "og:site_name", SITE_NAME);
 
     // Twitter
     setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:site", "@investingretire");
     setMeta("name", "twitter:title", config.title);
     setMeta("name", "twitter:description", config.description);
     setMeta("name", "twitter:image", image);
+    setMeta("name", "twitter:image:alt", config.title);
 
     // Article-specific OG tags (only when type=article)
     if (type === "article" && config.article) {

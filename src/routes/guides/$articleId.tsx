@@ -88,6 +88,99 @@ function ArticlePage() {
   const { article } = Route.useLoaderData();
   const progress = useReadingProgress();
 
+  // SEO: Article + BreadcrumbList + FAQPage JSON-LD
+  const author = getAuthorForCategory(article.category);
+  const reviewer = authors["editorial-team"];
+  const articleUrl = `${SITE_URL}/guides/${article.slug}`;
+  const publishedISO = "2026-01-15T09:00:00-05:00";
+  const modifiedISO = "2026-04-15T09:00:00-04:00";
+  const articleJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    url: articleUrl,
+    datePublished: publishedISO,
+    dateModified: modifiedISO,
+    inLanguage: "en-US",
+    articleSection: article.category,
+    wordCount: article.sections.reduce(
+      (n, s) =>
+        n +
+        (s.paragraphs?.join(" ").split(/\s+/).length || 0) +
+        (s.bullets?.join(" ").split(/\s+/).length || 0),
+      0
+    ),
+    keywords: [article.category, ...article.keyTakeaways.slice(0, 3)].join(", "),
+    author: {
+      "@type": "Person",
+      name: author.name,
+      jobTitle: author.title,
+      url: `${SITE_URL}/about`,
+    },
+    reviewedBy: {
+      "@type": "Organization",
+      name: reviewer.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/share-image.png`,
+      },
+    },
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/share-image.png`,
+      width: 1200,
+      height: 630,
+    },
+  };
+  const breadcrumbJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
+      { "@type": "ListItem", position: 3, name: article.category, item: `${SITE_URL}/guides?category=${encodeURIComponent(article.category)}` },
+      { "@type": "ListItem", position: 4, name: article.title, item: articleUrl },
+    ],
+  };
+  const faqJsonLd: Record<string, unknown> | null =
+    article.faqs && article.faqs.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: article.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
+  const seoTitle = `${article.title} | ${SITE_NAME}`;
+  const seoDescription =
+    article.description.length > 160
+      ? article.description.slice(0, 157).replace(/[\s,;:.]+$/, "") + "..."
+      : article.description;
+  useSeo({
+    title: seoTitle,
+    description: seoDescription,
+    path: `/guides/${article.slug}`,
+    type: "article",
+    jsonLd: faqJsonLd ? [articleJsonLd, breadcrumbJsonLd, faqJsonLd] : [articleJsonLd, breadcrumbJsonLd],
+    article: {
+      publishedTime: publishedISO,
+      modifiedTime: modifiedISO,
+      author: author.name,
+      section: article.category,
+      tags: article.keyTakeaways.slice(0, 5),
+    },
+  });
+
   // Build section IDs for TOC
   const sectionIds = article.sections.map((s, i) => `${slugify(s.heading)}-${i}`);
   const tocIds = [...sectionIds, "key-takeaways", "faqs"];
