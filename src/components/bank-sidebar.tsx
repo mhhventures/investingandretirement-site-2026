@@ -209,24 +209,6 @@ export function BankSidebar() {
         </ul>
       </SidebarBlock>
 
-      {/* Newsletter */}
-      <SidebarBlock title="Weekly Rate Alerts">
-        <div className="text-[11px] text-[#1a1a1a] leading-snug mb-2 font-serif italic">
-          &ldquo;Get the best savings rates delivered every Monday.&rdquo;
-        </div>
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-1.5">
-          <input
-            type="email"
-            required
-            placeholder="your@email.com"
-            className="w-full px-2.5 py-2 text-xs border border-[#d4c5b8] bg-[#fef6f1] rounded-sm focus:outline-none focus:ring-1 focus:ring-[#0e4d45] focus:border-[#0e4d45]"
-          />
-          <button className="w-full text-[11px] font-semibold bg-[#0e4d45] text-[#fef6f1] rounded-sm px-3 py-2 hover:bg-[#0a3832] transition-colors uppercase tracking-wider">
-            Get Rate Alerts
-          </button>
-        </form>
-      </SidebarBlock>
-
       <div className="text-[9px] text-[#5a5a5a] leading-snug px-1 italic">
         Advertiser Disclosure: We may be compensated when you click on offer links. This does not influence our editorial rankings.
       </div>

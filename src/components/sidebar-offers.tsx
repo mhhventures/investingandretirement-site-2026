@@ -110,11 +110,14 @@ export function Sidebar() {
           {TOP_OFFERS.map((o, idx) => {
             const p = products.find((x) => x.slug === o.slug);
             if (!p) return null;
+            const sep = p.url.includes("?") ? "&" : "?";
+            const affiliateUrl = `${p.url}${sep}utm_source=canyon&utm_medium=sidebar&utm_campaign=featured_offers&utm_content=${o.slug}`;
             return (
-              <Link
+              <a
                 key={o.slug}
-                to="/product/$slug"
-                params={{ slug: o.slug }}
+                href={affiliateUrl}
+                target="_blank"
+                rel="noopener sponsored"
                 className={`block group pl-2.5 border-l-[3px] border-[#0e4d45] ${
                   idx !== 0 ? "pt-2.5 border-t border-t-[#e4d9cf]" : ""
                 }`}
@@ -138,7 +141,7 @@ export function Sidebar() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -209,7 +212,7 @@ export function Sidebar() {
       </SidebarBlock>
 
       {/* Best Offers This Month — replace black promo block with editorial treatment */}
-      <SidebarBlock title="Best Offers This Month" action="View All" actionTo="/">
+      <SidebarBlock title="Best Offers This Month" action="View All" actionTo="/guides/best-bank-bonuses-this-month">
         <div className="border-l-[3px] border-[#0e4d45] pl-3">
           <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] text-[#540f04] mb-1.5">
             &#9650; Limited Time
@@ -220,13 +223,22 @@ export function Sidebar() {
           <p className="text-[10px] sm:text-[11px] text-[#5a5a5a] leading-snug mb-2.5">
             Open a new SoFi Checking and Savings account with qualifying direct deposits.
           </p>
-          <Link
-            to="/product/$slug"
-            params={{ slug: "sofi-checking-savings" }}
-            className="inline-block w-full text-center text-[10px] sm:text-[11px] font-semibold bg-[#0e4d45] hover:bg-[#0a3832] text-[#fef6f1] rounded-sm px-3 py-2 transition-colors uppercase tracking-wider"
-          >
-            See Offer
-          </Link>
+          {(() => {
+            const sofi = products.find((x) => x.slug === "sofi-checking-savings");
+            const base = sofi?.url || "#";
+            const sep = base.includes("?") ? "&" : "?";
+            const href = `${base}${sep}utm_source=canyon&utm_medium=sidebar&utm_campaign=best_offers_this_month&utm_content=sofi-checking-savings`;
+            return (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener sponsored"
+                className="inline-block w-full text-center text-[10px] sm:text-[11px] font-semibold bg-[#0e4d45] hover:bg-[#0a3832] text-[#fef6f1] rounded-sm px-3 py-2 transition-colors uppercase tracking-wider"
+              >
+                See Offer
+              </a>
+            );
+          })()}
         </div>
       </SidebarBlock>
 
