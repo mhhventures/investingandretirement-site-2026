@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { getByCategory } from "@/data/products";
 import type { Product } from "@/data/products";
-import { ProductCard, ProductLogo, StarRating } from "@/components/product-card";
+import { ProductCard, ProductLogo, StarRating, GradeBadge, DisclosureIcon } from "@/components/product-card";
+import { getDisclosure } from "@/data/disclosures";
 import { CategoryPage } from "@/components/category-page";
 import { useSeo, SITE_URL } from "@/lib/seo";
 
@@ -32,6 +33,7 @@ function HeroPick({ p }: { p: Product }) {
         </div>
         <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
           <StarRating rating={p.rating} size="md" />
+          {p.grade && <GradeBadge grade={p.grade} size="md" />}
           <span className="text-[8px] sm:text-[10px] text-[#5a5a5a] hidden sm:inline">
             ({p.reviews.toLocaleString()} reviews)
           </span>
@@ -50,7 +52,10 @@ function HeroPick({ p }: { p: Product }) {
           </div>
           <div className="sm:ml-auto flex flex-wrap gap-2 sm:gap-5 text-center">
             <div className="flex-shrink-0">
-              <div className="text-[8px] sm:text-[9px] text-[#5a5a5a] uppercase tracking-wider">Commissions</div>
+              <div className="text-[8px] sm:text-[9px] text-[#5a5a5a] uppercase tracking-wider flex items-center justify-center gap-1">
+                Commissions
+                <DisclosureIcon text={p.disclosure || getDisclosure(p.slug) || "Commissions, fees, and promotional offers are subject to change. See provider site for full terms and disclosures."} label={`${p.name} disclosure`} />
+              </div>
               <div className="font-serif font-bold text-base sm:text-2xl text-[#0e4d45]">{p.fees}</div>
             </div>
             {p.bonus && (

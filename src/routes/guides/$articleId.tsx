@@ -414,6 +414,7 @@ function ArticlePage() {
                               <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black">Account</th>
                               <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black">APY</th>
                               <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black">Min / Fee</th>
+                              <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black">Bonus / Offer</th>
                               <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black">Best For</th>
                               <th className="px-3 py-2.5 font-bold text-[10px] uppercase tracking-wider text-black text-right">Apply</th>
                             </tr>
@@ -449,6 +450,7 @@ function ArticlePage() {
                                   <div>{row.minDeposit} min</div>
                                   <div className="text-gray-600">{row.monthlyFee} fee</div>
                                 </td>
+                                <td className="px-3 py-3 text-[12px] max-w-[200px]">{row.bonus ? <div className="font-bold text-[#0e4d45] leading-snug">{row.bonus}</div> : <div className="text-gray-500">—</div>}</td>
                                 <td className="px-3 py-3 text-[12px] text-gray-800 max-w-[200px]">{row.bestFor}</td>
                                 <td className="px-3 py-3 text-right">
                                   <a href={row.ctaUrl} target="_blank" rel="noopener noreferrer sponsored" className="inline-block px-3 py-2 rounded bg-[#0e4d45] text-white text-[10px] font-bold uppercase tracking-wider hover:bg-[#0a3832] transition-colors whitespace-nowrap">Open →</a>
@@ -484,6 +486,7 @@ function ArticlePage() {
                               <div><div className="text-[10px] text-gray-500 uppercase tracking-wider">APY</div><div className="font-bold text-[#0e4d45]">{row.apy}</div>{row.apyNote && <div className="text-[10px] text-gray-600">{row.apyNote}</div>}</div>
                               <div><div className="text-[10px] text-gray-500 uppercase tracking-wider">Min / Fee</div><div>{row.minDeposit} / {row.monthlyFee}</div></div>
                             </div>
+                            {row.bonus && (<div className="mb-3 p-2.5 rounded bg-[#f9eadf] border border-[#e4d9cf]"><div className="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Bonus / Offer</div><div className="font-bold text-[#0e4d45] text-[12px] leading-snug">{row.bonus}</div></div>)}
                             <div className="text-[12px] text-gray-800 mb-3">{row.bestFor}</div>
                             <a href={row.ctaUrl} target="_blank" rel="noopener noreferrer sponsored" className="block w-full text-center px-3 py-2.5 rounded bg-[#0e4d45] text-white text-[11px] font-bold uppercase tracking-wider hover:bg-[#0a3832] transition-colors">{row.ctaLabel}</a>
                           </div>

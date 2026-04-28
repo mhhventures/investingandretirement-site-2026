@@ -1,11 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Author } from "@/lib/authors";
 
-/**
- * FTC-compliant affiliate disclosure banner.
- * Legally required to appear clearly and conspicuously at the top of pages
- * that contain affiliate links (product reviews, comparison pages).
- */
 export function FtcDisclosure({ variant = "default" }: { variant?: "default" | "compact" }) {
   if (variant === "compact") {
     return (
@@ -35,10 +30,6 @@ export function FtcDisclosure({ variant = "default" }: { variant?: "default" | "
   );
 }
 
-/**
- * Author byline shown at the top of reviews and guides.
- * Adds E-E-A-T signals (Experience, Expertise, Authoritativeness, Trust) — critical for YMYL content.
- */
 export function AuthorByline({
   author,
   publishedDate,
@@ -92,9 +83,6 @@ export function AuthorByline({
   );
 }
 
-/**
- * Editorial standards badge — shown on reviews to signal our review process.
- */
 export function EditorialStandardsBadge() {
   return (
     <Link
@@ -107,9 +95,6 @@ export function EditorialStandardsBadge() {
   );
 }
 
-/**
- * How We Review section — transparency block shown on product reviews.
- */
 export function HowWeReview({ category }: { category: "bank" | "investing" | "app" }) {
   const categoryLabel =
     category === "bank" ? "banks" : category === "investing" ? "brokerages" : "financial apps";

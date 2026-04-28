@@ -3,7 +3,8 @@ import { useState, useMemo } from "react";
 import { Link } from "@tanstack/react-router";
 import { getByCategory } from "@/data/products";
 import type { Product } from "@/data/products";
-import { ProductCard, ProductLogo, StarRating } from "@/components/product-card";
+import { ProductCard, ProductLogo, StarRating, GradeBadge, DisclosureIcon } from "@/components/product-card";
+import { getDisclosure } from "@/data/disclosures";
 import { BankSidebar } from "@/components/bank-sidebar";
 import { withUtm } from "@/lib/affiliate";
 import { useSeo, SITE_URL } from "@/lib/seo";
@@ -32,9 +33,10 @@ function HeroPick({ p }: { p: Product }) {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           <StarRating rating={p.rating} size="md" />
-          <span className="text-[10px] text-[#5a5a5a]">Ranked by APY, fees, minimums, and FDIC coverage. Editorial independence guaranteed.</span>
+          {p.grade && <GradeBadge grade={p.grade} size="md" />}
+          <span className="text-[10px] text-[#5a5a5a] hidden sm:inline">Ranked by APY, fees, minimums, and FDIC coverage.</span>
         </div>
       </div>
       <div className="p-5 sm:p-6">
@@ -49,8 +51,20 @@ function HeroPick({ p }: { p: Product }) {
           <div className="sm:ml-auto grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-5 text-center w-full sm:w-auto">
             {p.apy && (
               <div className="flex-shrink-0">
-                <div className="text-[9px] text-[#5a5a5a] uppercase tracking-wider">APY</div>
+                <div className="text-[9px] text-[#5a5a5a] uppercase tracking-wider flex items-center justify-center gap-1">
+                  APY
+                  <DisclosureIcon text={p.disclosure || getDisclosure(p.slug) || "Rates and terms subject to change. See provider site for full disclosures."} label={`${p.name} disclosure`} />
+                </div>
                 <div className="font-serif font-bold text-xl sm:text-2xl text-[#0e4d45]">{p.apy}</div>
+              </div>
+            )}
+            {!p.apy && (
+              <div className="flex-shrink-0">
+                <div className="text-[9px] text-[#5a5a5a] uppercase tracking-wider flex items-center justify-center gap-1">
+                  Details
+                  <DisclosureIcon text={p.disclosure || getDisclosure(p.slug) || "Rates and terms subject to change. See provider site for full disclosures."} label={`${p.name} disclosure`} />
+                </div>
+                <div className="font-serif font-bold text-xl sm:text-2xl text-[#0e4d45]">—</div>
               </div>
             )}
             {p.bonus && (

@@ -24,6 +24,17 @@ export type Product = {
   assetsAvailable?: string[]; // e.g., ["Crypto", "Stocks", "Prediction Markets", "Precious Metals"]
   platformFeatures?: string[]; // e.g., ["Staking", "Card", "Wallet", "Perpetual Futures", "NFTs"]
   numCryptoAssets?: string; // e.g., "260+"
+  // Editorial letter grade (Brokerage & Robo-Advisor only for now)
+  // Rubric: Costs & Fees (25), Platform & Tools (20), Asset Selection (15),
+  // Account Types (10), Education & Research (10), Customer Support (10), Trust & Safety (10)
+  // Brokerage/Robo rubric: Costs & Fees (25), Platform & Tools (20), Asset Selection (15), Account Types (10), Education & Research (10), Customer Support (10), Trust & Safety (10)
+  // Crypto rubric: Fees & Spreads (25), Asset Selection (20), Security & Trust (20), Platform & Tools (15), Earn/Staking (10), Customer Support (10)
+  // Prediction Markets rubric: Regulation & Trust (25), Liquidity & Market Depth (20), Fees (20), Market Variety (15), Platform UX (10), Accessibility (10)
+  // Bank rubric: APY/Yield (30), Fees (20), Access & Convenience (15), Account Features (15), Trust & Safety (10), Customer Support (10)
+  // A+ 93–100 · A 88–92 · A- 83–87 · B+ 78–82 · B 73–77 · B- 68–72 · C+ 60–67
+  grade?: string;
+  gradeScore?: number; // 0–100 composite score behind the letter grade
+  disclosure?: string; // Fine-print disclosure for APY/bonus/fees shown via ? icon on card
 };
 
 export const products: Product[] = [
@@ -36,7 +47,9 @@ export const products: Product[] = [
     provider: "SoFi Bank, N.A.",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.8,
+    grade: "A+",
+    gradeScore: 95,
+    rating: 4.9,
     reviews: 2847,
     tagline: "Up to 4.00% APY on savings with a $400 welcome bonus.",
     highlights: [
@@ -69,7 +82,9 @@ export const products: Product[] = [
     provider: "Ally Bank",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.7,
+    grade: "A-",
+    gradeScore: 86,
+    rating: 4.6,
     reviews: 5120,
     tagline: "Trusted online bank with a 3.10% APY and no fees.",
     highlights: [
@@ -100,7 +115,9 @@ export const products: Product[] = [
     provider: "Goldman Sachs Bank USA",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.6,
+    grade: "A-",
+    gradeScore: 84,
+    rating: 4.5,
     reviews: 3402,
     tagline: "Straightforward high-yield savings from Goldman Sachs.",
     highlights: [
@@ -131,7 +148,9 @@ export const products: Product[] = [
     provider: "Barclays Bank Delaware",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.5,
+    grade: "B+",
+    gradeScore: 80,
+    rating: 4.3,
     reviews: 2180,
     tagline: "3.65% APY from a global banking leader.",
     highlights: [
@@ -162,7 +181,9 @@ export const products: Product[] = [
     provider: "CIT Bank, a division of First Citizens Bank",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.6,
+    grade: "A-",
+    gradeScore: 85,
+    rating: 4.5,
     reviews: 1940,
     tagline: "Up to 4.10% APY with 0.35% APY Boost for balances of $5,000+.",
     highlights: [
@@ -196,7 +217,9 @@ export const products: Product[] = [
     provider: "Bread Financial (Comenity Capital Bank)",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.4,
+    grade: "A",
+    gradeScore: 88,
+    rating: 4.6,
     reviews: 1280,
     tagline: "Strong APY paired with one of the best CD lineups.",
     highlights: [
@@ -227,7 +250,9 @@ export const products: Product[] = [
     provider: "LendingClub Bank, N.A.",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.4,
+    grade: "B+",
+    gradeScore: 81,
+    rating: 4.3,
     reviews: 1560,
     tagline: "Reward APY for savers who deposit $250+ per month.",
     highlights: [
@@ -258,7 +283,9 @@ export const products: Product[] = [
     provider: "American Express National Bank",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.6,
+    grade: "B+",
+    gradeScore: 80,
+    rating: 4.3,
     reviews: 4320,
     tagline: "Trusted name in finance with a 3.20% APY.",
     highlights: [
@@ -289,7 +316,9 @@ export const products: Product[] = [
     provider: "Forbright Bank",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.5,
+    grade: "B+",
+    gradeScore: 82,
+    rating: 4.4,
     reviews: 860,
     tagline: "Strong APY from a sustainability-focused bank.",
     highlights: [
@@ -320,7 +349,9 @@ export const products: Product[] = [
     provider: "Axos Bank",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.5,
+    grade: "A-",
+    gradeScore: 84,
+    rating: 4.4,
     reviews: 1820,
     tagline: "Earn 4.21% APY with qualifying direct deposits and balance.",
     highlights: [
@@ -351,7 +382,9 @@ export const products: Product[] = [
     provider: "Chime (banking services by The Bancorp Bank or Stride Bank)",
     category: "bank",
     subcategory: "High-Yield Savings",
-    rating: 4.5,
+    grade: "B+",
+    gradeScore: 80,
+    rating: 4.3,
     reviews: 9840,
     tagline: "Up to 3.75% APY with automatic savings tools.",
     highlights: [
@@ -382,7 +415,9 @@ export const products: Product[] = [
     provider: "JPMorgan Chase Bank, N.A.",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.4,
+    grade: "C+",
+    gradeScore: 62,
+    rating: 3.0,
     reviews: 6820,
     tagline: "Basic savings from the nation's largest bank with 4,700+ branches.",
     highlights: [
@@ -414,7 +449,9 @@ export const products: Product[] = [
     provider: "Wells Fargo Bank, N.A.",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.3,
+    grade: "C+",
+    gradeScore: 63,
+    rating: 3.0,
     reviews: 4120,
     tagline: "Premium-tier savings at Wells Fargo with relationship benefits.",
     highlights: [
@@ -446,7 +483,9 @@ export const products: Product[] = [
     provider: "Bank of America, N.A.",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.4,
+    grade: "C+",
+    gradeScore: 62,
+    rating: 3.0,
     reviews: 5240,
     tagline: "Bank of America's savings account with Preferred Rewards boost potential.",
     highlights: [
@@ -478,7 +517,9 @@ export const products: Product[] = [
     provider: "Citibank, N.A.",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.5,
+    grade: "C+",
+    gradeScore: 65,
+    rating: 3.2,
     reviews: 2980,
     tagline: "Traditional Citi savings with tiered APY based on package and balance.",
     highlights: [
@@ -510,7 +551,9 @@ export const products: Product[] = [
     provider: "U.S. Bank National Association",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.4,
+    grade: "C+",
+    gradeScore: 62,
+    rating: 3.0,
     reviews: 2180,
     tagline: "Traditional savings from the 5th-largest U.S. bank.",
     highlights: [
@@ -542,7 +585,9 @@ export const products: Product[] = [
     provider: "Truist Bank",
     category: "bank",
     subcategory: "Big Bank Savings",
-    rating: 3.3,
+    grade: "C+",
+    gradeScore: 61,
+    rating: 2.9,
     reviews: 1640,
     tagline: "Relationship savings from the merger of BB&T and SunTrust.",
     highlights: [
@@ -578,7 +623,9 @@ export const products: Product[] = [
     provider: "JPMorgan Chase Bank, N.A.",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.3,
+    grade: "B+",
+    gradeScore: 78,
+    rating: 4.2,
     reviews: 8210,
     tagline: "$400 new-customer bonus with qualifying direct deposits (offer valid through 7/15/26).",
     highlights: [
@@ -609,7 +656,9 @@ export const products: Product[] = [
     provider: "Discover Bank",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.6,
+    grade: "A",
+    gradeScore: 89,
+    rating: 4.7,
     reviews: 4211,
     tagline: "Earn 1% cash back on up to $3,000 in debit purchases monthly.",
     highlights: [
@@ -639,6 +688,8 @@ export const products: Product[] = [
     provider: "Chime (banking services by The Bancorp Bank or Stride Bank)",
     category: "bank",
     subcategory: "Checking",
+    grade: "A-",
+    gradeScore: 85,
     rating: 4.5,
     reviews: 18240,
     tagline: "Fee-free mobile banking with early direct deposit.",
@@ -669,6 +720,8 @@ export const products: Product[] = [
     provider: "SoFi Bank, N.A.",
     category: "bank",
     subcategory: "Checking",
+    grade: "A",
+    gradeScore: 88,
     rating: 4.7,
     reviews: 5120,
     tagline: "Earn 0.50% APY on checking with up to a $400 sign-up bonus.",
@@ -701,6 +754,8 @@ export const products: Product[] = [
     provider: "Capital One, N.A.",
     category: "bank",
     subcategory: "Checking",
+    grade: "A-",
+    gradeScore: 84,
     rating: 4.5,
     reviews: 7820,
     tagline: "No-fee checking with access to Capital One Cafés and branches.",
@@ -732,7 +787,9 @@ export const products: Product[] = [
     provider: "NBKC Bank",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.5,
+    grade: "A",
+    gradeScore: 90,
+    rating: 4.7,
     reviews: 1420,
     tagline: "Combined checking and savings that earns 1.75% APY on everything.",
     highlights: [
@@ -763,7 +820,9 @@ export const products: Product[] = [
     provider: "American Express National Bank",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.5,
+    grade: "A",
+    gradeScore: 88,
+    rating: 4.6,
     reviews: 2140,
     tagline: "Earn 1.00% APY plus Membership Rewards on debit purchases.",
     highlights: [
@@ -794,7 +853,9 @@ export const products: Product[] = [
     provider: "Upgrade (banking by Cross River Bank)",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.4,
+    grade: "A-",
+    gradeScore: 86,
+    rating: 4.5,
     reviews: 1980,
     tagline: "Up to 2% cash back on everyday debit card purchases.",
     highlights: [
@@ -824,7 +885,9 @@ export const products: Product[] = [
     provider: "PNC Bank, N.A.",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.3,
+    grade: "B+",
+    gradeScore: 78,
+    rating: 4.2,
     reviews: 4120,
     tagline: "Three-in-one account (Spend, Reserve, Growth) with up to $400 bonus.",
     highlights: [
@@ -855,7 +918,9 @@ export const products: Product[] = [
     provider: "Ally Bank",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.7,
+    grade: "A-",
+    gradeScore: 83,
+    rating: 4.5,
     reviews: 6210,
     tagline: "Interest-earning checking from a leading online bank.",
     highlights: [
@@ -886,7 +951,9 @@ export const products: Product[] = [
     provider: "Morgan Stanley Private Bank, N.A.",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.3,
+    grade: "B+",
+    gradeScore: 78,
+    rating: 4.2,
     reviews: 1520,
     tagline: "Integrated checking for E*TRADE brokerage customers.",
     highlights: [
@@ -916,7 +983,9 @@ export const products: Product[] = [
     provider: "Axos Bank",
     category: "bank",
     subcategory: "Checking",
-    rating: 4.5,
+    grade: "A",
+    gradeScore: 88,
+    rating: 4.6,
     reviews: 2860,
     tagline: "Up to 3.30% APY — one of the highest checking APYs in the U.S.",
     highlights: [
@@ -951,6 +1020,8 @@ export const products: Product[] = [
     provider: "Fidelity Brokerage Services",
     category: "investing",
     subcategory: "Brokerage",
+    grade: "A+",
+    gradeScore: 96,
     rating: 4.9,
     reviews: 9820,
     tagline: "Full-service brokerage with zero-commission trades and top research.",
@@ -986,7 +1057,9 @@ export const products: Product[] = [
     provider: "Robinhood Markets, Inc.",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.4,
+    grade: "A",
+    gradeScore: 88,
+    rating: 4.7,
     reviews: 12450,
     tagline: "Commission-free trading for stocks, options, crypto, and futures.",
     highlights: [
@@ -1021,7 +1094,9 @@ export const products: Product[] = [
     provider: "The Vanguard Group",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.7,
+    grade: "A-",
+    gradeScore: 86,
+    rating: 4.6,
     reviews: 6310,
     tagline: "The pioneer of low-cost index fund investing.",
     highlights: [
@@ -1056,7 +1131,9 @@ export const products: Product[] = [
     provider: "Morgan Stanley",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.6,
+    grade: "A-",
+    gradeScore: 84,
+    rating: 4.5,
     reviews: 5820,
     tagline: "Powerful trading platform backed by Morgan Stanley.",
     highlights: [
@@ -1091,7 +1168,9 @@ export const products: Product[] = [
     provider: "Webull Financial LLC",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.5,
+    grade: "B+",
+    gradeScore: 81,
+    rating: 4.3,
     reviews: 9420,
     tagline: "Commission-free trading with pro-grade charts and free stock bonuses.",
     highlights: [
@@ -1126,7 +1205,9 @@ export const products: Product[] = [
     provider: "SoFi Securities LLC",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.4,
+    grade: "B",
+    gradeScore: 75,
+    rating: 3.9,
     reviews: 4120,
     tagline: "All-in-one investing alongside SoFi banking and loans.",
     highlights: [
@@ -1160,7 +1241,9 @@ export const products: Product[] = [
     provider: "Interactive Brokers LLC",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.8,
+    grade: "A",
+    gradeScore: 90,
+    rating: 4.7,
     reviews: 7210,
     tagline: "Pro-grade platform with access to 150+ global markets.",
     highlights: [
@@ -1194,6 +1277,8 @@ export const products: Product[] = [
     provider: "Charles Schwab & Co., Inc.",
     category: "investing",
     subcategory: "Brokerage",
+    grade: "A",
+    gradeScore: 91,
     rating: 4.8,
     reviews: 8410,
     tagline: "Full-service brokerage with thinkorswim and 24/7 support.",
@@ -1228,7 +1313,9 @@ export const products: Product[] = [
     provider: "Moomoo Financial Inc.",
     category: "investing",
     subcategory: "Brokerage",
-    rating: 4.4,
+    grade: "B",
+    gradeScore: 74,
+    rating: 4.0,
     reviews: 3610,
     tagline: "Advanced trading tools with generous new-user sign-up bonuses.",
     highlights: [
@@ -1267,7 +1354,9 @@ export const products: Product[] = [
     provider: "M1 Finance LLC",
     category: "investing",
     subcategory: "Robo-Advisor",
-    rating: 4.5,
+    grade: "B+",
+    gradeScore: 80,
+    rating: 4.3,
     reviews: 2890,
     tagline: "Automated investing with fully customizable \"Pies\".",
     highlights: [
@@ -1301,6 +1390,8 @@ export const products: Product[] = [
     provider: "Betterment LLC",
     category: "investing",
     subcategory: "Robo-Advisor",
+    grade: "A-",
+    gradeScore: 86,
     rating: 4.6,
     reviews: 3520,
     tagline: "The original set-it-and-forget-it robo-advisor.",
@@ -1335,7 +1426,9 @@ export const products: Product[] = [
     provider: "Acorns Advisers, LLC",
     category: "investing",
     subcategory: "Robo-Advisor",
-    rating: 4.4,
+    grade: "B",
+    gradeScore: 74,
+    rating: 3.9,
     reviews: 10820,
     tagline: "Invest your spare change automatically with Round-Ups.",
     highlights: [
@@ -1369,6 +1462,8 @@ export const products: Product[] = [
     provider: "Wealthfront Advisers LLC",
     category: "investing",
     subcategory: "Robo-Advisor",
+    grade: "A",
+    gradeScore: 89,
     rating: 4.7,
     reviews: 4820,
     tagline: "Automated investing plus a high-yield cash account in one app.",
@@ -1408,7 +1503,9 @@ export const products: Product[] = [
     provider: "Coinbase Global, Inc.",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.5,
+    rating: 4.7,
+    grade: "A",
+    gradeScore: 90,
     reviews: 18420,
     tagline: "The most trusted, publicly traded U.S. crypto exchange.",
     highlights: [
@@ -1445,7 +1542,9 @@ export const products: Product[] = [
     provider: "Payward, Inc.",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.6,
+    rating: 4.7,
+    grade: "A",
+    gradeScore: 89,
     reviews: 7840,
     tagline: "Pro-grade crypto exchange with deep liquidity and staking.",
     highlights: [
@@ -1480,7 +1579,9 @@ export const products: Product[] = [
     provider: "Gemini Trust Company, LLC",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.4,
+    rating: 4.5,
+    grade: "A-",
+    gradeScore: 85,
     reviews: 4210,
     tagline: "Regulated crypto exchange built on institutional-grade security.",
     highlights: [
@@ -1515,7 +1616,9 @@ export const products: Product[] = [
     provider: "Foris DAX MT Limited",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.3,
+    rating: 4.2,
+    grade: "B+",
+    gradeScore: 80,
     reviews: 12820,
     tagline: "All-in-one crypto app with a rewards Visa card and staking.",
     highlights: [
@@ -1549,7 +1652,9 @@ export const products: Product[] = [
     provider: "Uphold HQ, Inc.",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.2,
+    rating: 3.9,
+    grade: "B",
+    gradeScore: 74,
     reviews: 5120,
     tagline: "Trade crypto, precious metals, and equities from one wallet.",
     highlights: [
@@ -1583,7 +1688,9 @@ export const products: Product[] = [
     provider: "OKX",
     category: "investing",
     subcategory: "Crypto",
-    rating: 4.3,
+    rating: 4.2,
+    grade: "B+",
+    gradeScore: 79,
     reviews: 6940,
     tagline: "Global crypto exchange with deep liquidity and Web3 tools.",
     highlights: [
@@ -1621,7 +1728,9 @@ export const products: Product[] = [
     provider: "Kalshi Inc.",
     category: "investing",
     subcategory: "Prediction Markets",
-    rating: 4.6,
+    rating: 4.7,
+    grade: "A",
+    gradeScore: 90,
     reviews: 3820,
     tagline: "The first CFTC-regulated prediction market exchange in the U.S.",
     highlights: [
@@ -1652,7 +1761,9 @@ export const products: Product[] = [
     provider: "Polymarket Ltd.",
     category: "investing",
     subcategory: "Prediction Markets",
-    rating: 4.4,
+    rating: 4.5,
+    grade: "A-",
+    gradeScore: 85,
     reviews: 5210,
     tagline: "The world's largest prediction market — trade on real-world events with crypto.",
     highlights: [

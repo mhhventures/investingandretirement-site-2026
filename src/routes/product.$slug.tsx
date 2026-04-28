@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getBySlug, products } from "@/data/products";
 import { withUtm } from "@/lib/affiliate";
-import { StarRating, ProductLogo } from "@/components/product-card";
+import { StarRating, ProductLogo, DisclosureIcon } from "@/components/product-card";
+import { getDisclosure } from "@/data/disclosures";
 import { Sidebar } from "@/components/sidebar-offers";
 import { ClarityResearch, GradeBadge, ResearchBlocks, StrengthsLimitations } from "@/components/research-blocks";
 import { useSeo, SITE_URL } from "@/lib/seo";
@@ -129,7 +130,7 @@ function ProductDetail() {
                           <span className="text-[9px] sm:text-[11px] text-black/50">({p.reviews.toLocaleString()})</span>
                         </div>
                       </div>
-                      <GradeBadge rating={p.rating} />
+                      <GradeBadge rating={p.rating} grade={p.grade} />
                     </div>
                   </div>
                 </div>
@@ -150,26 +151,29 @@ function ProductDetail() {
 
                 {/* Key stats row */}
                 <div className="mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t border-[#e4d9cf] grid grid-cols-2 gap-2 sm:gap-3 text-[10px] sm:text-[11px]">
+                  {(() => { const disc = (p as any).disclosure || getDisclosure(p.slug); const attachTo = p.apy ? "apy" : p.bonus ? "bonus" : "fees"; return (<>
                   {p.apy && (
                     <div>
-                      <div className="text-black/40 uppercase tracking-wide text-[10px]">APY</div>
+                      <div className="flex items-center gap-1 text-black/40 uppercase tracking-wide text-[10px]">APY {disc && attachTo === "apy" && <DisclosureIcon text={disc} label={`${p.name} APY disclosure`} />}</div>
                       <div className="font-bold text-[#0e4d45] text-sm">{p.apy}</div>
                     </div>
                   )}
                   {p.bonus && (
                     <div>
-                      <div className="text-black/40 uppercase tracking-wide text-[10px]">Bonus</div>
+                      <div className="flex items-center gap-1 text-black/40 uppercase tracking-wide text-[10px]">Bonus {disc && attachTo === "bonus" && <DisclosureIcon text={disc} label={`${p.name} bonus disclosure`} />}</div>
                       <div className="font-bold text-black text-sm">{p.bonus}</div>
                     </div>
                   )}
                   <div>
-                    <div className="text-black/40 uppercase tracking-wide text-[10px]">Fees</div>
+                    <div className="flex items-center gap-1 text-black/40 uppercase tracking-wide text-[10px]">Fees {disc && attachTo === "fees" && <DisclosureIcon text={disc} label={`${p.name} fees disclosure`} />}</div>
                     <div className="font-semibold text-black text-sm">{p.fees}</div>
                   </div>
+                  </>); })()}
                   <div>
                     <div className="text-black/40 uppercase tracking-wide text-[10px]">Min. Deposit</div>
                     <div className="font-semibold text-black text-sm">{p.minDeposit}</div>
                   </div>
+                
                 </div>
 
                 {/* CTA row */}

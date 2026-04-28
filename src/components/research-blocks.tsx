@@ -158,7 +158,7 @@ export function ClarityResearch({ product }: { product: Product }) {
         </div>
         <div>
           <div className="text-[10px] sm:text-[11px] font-bold text-[#fef6f1] uppercase tracking-widest">Research Commentary</div>
-          <div className="text-[9px] sm:text-[10px] text-[#fef6f1]/60">Clarity Research</div>
+          <div className="text-[9px] sm:text-[10px] text-[#fef6f1]/60">I&R Editorial Research Desk</div>
         </div>
       </div>
       <div className="bg-white px-3 sm:px-4 py-2 sm:py-3">
@@ -183,8 +183,8 @@ function gradeFromRating(rating: number): string {
   return "C+";
 }
 
-export function GradeBadge({ rating }: { rating: number }) {
-  const grade = gradeFromRating(rating);
+export function GradeBadge({ rating, grade: gradeProp }: { rating: number; grade?: string }) {
+  const grade = gradeProp ?? gradeFromRating(rating);
   const isA = grade.startsWith("A");
   return (
     <div className="flex flex-col items-center">
