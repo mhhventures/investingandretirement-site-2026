@@ -411,7 +411,7 @@ function ComparableCard({
   compareDisabled: boolean;
 }) {
   return (
-    <div className="relative">
+    <div className="relative min-w-0 w-full">
       <ProductCard p={p} rank={rank} />
       <div className="absolute top-2.5 right-2.5">
         <label className="flex items-center gap-1 cursor-pointer group">
@@ -465,7 +465,7 @@ function SubcategorySection({
         <h2 className="font-serif font-bold text-xl text-black">{title}</h2>
         <p className="text-[11px] text-[#5a5a5a] mt-0.5">{description}</p>
       </div>
-      <div className="grid sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
         {products.map((p, i) => (
           <ComparableCard
             key={p.slug}
@@ -719,7 +719,7 @@ function BankAccounts() {
     .filter(Boolean) as Product[];
 
   return (
-    <div className="bg-[#fef6f1]">
+    <div className="bg-[#fef6f1] overflow-x-hidden">
       {/* Page Header */}
       <section className="border-b border-[#e4d9cf]">
         <div className="max-w-6xl mx-auto px-4 py-7">
@@ -867,7 +867,7 @@ function BankAccounts() {
               ))
             ) : (
               // Flat filtered list
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
                 {rest.map((p, i) => (
                   <ComparableCard
                     key={p.slug}
