@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShipperDraftRouteImport } from './routes/shipper-draft'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as InvestingRouteImport } from './routes/investing'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as FinancialAppsRouteImport } from './routes/financial-apps'
@@ -39,6 +40,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsletterRoute = NewsletterRouteImport.update({
+  id: '/newsletter',
+  path: '/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvestingRoute = InvestingRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/financial-apps': typeof FinancialAppsRoute
   '/guides': typeof GuidesRouteWithChildren
   '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/financial-apps': typeof FinancialAppsRoute
   '/guides': typeof GuidesRouteWithChildren
   '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/financial-apps': typeof FinancialAppsRoute
   '/guides': typeof GuidesRouteWithChildren
   '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/financial-apps'
     | '/guides'
     | '/investing'
+    | '/newsletter'
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/financial-apps'
     | '/guides'
     | '/investing'
+    | '/newsletter'
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/financial-apps'
     | '/guides'
     | '/investing'
+    | '/newsletter'
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   FinancialAppsRoute: typeof FinancialAppsRoute
   GuidesRoute: typeof GuidesRouteWithChildren
   InvestingRoute: typeof InvestingRoute
+  NewsletterRoute: typeof NewsletterRoute
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   ShipperDraftRoute: typeof ShipperDraftRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsletter': {
+      id: '/newsletter'
+      path: '/newsletter'
+      fullPath: '/newsletter'
+      preLoaderRoute: typeof NewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/investing': {
@@ -387,6 +407,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinancialAppsRoute: FinancialAppsRoute,
   GuidesRoute: GuidesRouteWithChildren,
   InvestingRoute: InvestingRoute,
+  NewsletterRoute: NewsletterRoute,
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   ShipperDraftRoute: ShipperDraftRoute,
