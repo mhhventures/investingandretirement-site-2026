@@ -7,6 +7,7 @@ const CATEGORIES = [
   { label: "Financial Apps", to: "/financial-apps" },
   { label: "Reviews", to: "/reviews" },
   { label: "Guides", to: "/guides" },
+  { label: "Calculators", to: "/calculators" },
 ];
 
 function ScrollToTop() {

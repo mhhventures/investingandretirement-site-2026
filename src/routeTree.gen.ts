@@ -18,11 +18,13 @@ import { Route as FinancialAppsRouteImport } from './routes/financial-apps'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DisclosureRouteImport } from './routes/disclosure'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CalculatorsRouteImport } from './routes/calculators'
 import { Route as BankAccountsRouteImport } from './routes/bank-accounts'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as GuidesArticleIdRouteImport } from './routes/guides/$articleId'
+import { Route as CalculatorsCalcIdRouteImport } from './routes/calculators/$calcId'
 
 const ShipperDraftRoute = ShipperDraftRouteImport.update({
   id: '/shipper-draft',
@@ -69,6 +71,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalculatorsRoute = CalculatorsRouteImport.update({
+  id: '/calculators',
+  path: '/calculators',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BankAccountsRoute = BankAccountsRouteImport.update({
   id: '/bank-accounts',
   path: '/bank-accounts',
@@ -94,11 +101,17 @@ const GuidesArticleIdRoute = GuidesArticleIdRouteImport.update({
   path: '/$articleId',
   getParentRoute: () => GuidesRoute,
 } as any)
+const CalculatorsCalcIdRoute = CalculatorsCalcIdRouteImport.update({
+  id: '/$calcId',
+  path: '/$calcId',
+  getParentRoute: () => CalculatorsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bank-accounts': typeof BankAccountsRoute
+  '/calculators': typeof CalculatorsRouteWithChildren
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/faq': typeof FaqRoute
@@ -108,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
+  '/calculators/$calcId': typeof CalculatorsCalcIdRoute
   '/guides/$articleId': typeof GuidesArticleIdRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -115,6 +129,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bank-accounts': typeof BankAccountsRoute
+  '/calculators': typeof CalculatorsRouteWithChildren
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/faq': typeof FaqRoute
@@ -124,6 +139,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
+  '/calculators/$calcId': typeof CalculatorsCalcIdRoute
   '/guides/$articleId': typeof GuidesArticleIdRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -132,6 +148,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bank-accounts': typeof BankAccountsRoute
+  '/calculators': typeof CalculatorsRouteWithChildren
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/faq': typeof FaqRoute
@@ -141,6 +158,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/shipper-draft': typeof ShipperDraftRoute
+  '/calculators/$calcId': typeof CalculatorsCalcIdRoute
   '/guides/$articleId': typeof GuidesArticleIdRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -150,6 +168,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/bank-accounts'
+    | '/calculators'
     | '/contact'
     | '/disclosure'
     | '/faq'
@@ -159,6 +178,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
+    | '/calculators/$calcId'
     | '/guides/$articleId'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -166,6 +186,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/bank-accounts'
+    | '/calculators'
     | '/contact'
     | '/disclosure'
     | '/faq'
@@ -175,6 +196,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
+    | '/calculators/$calcId'
     | '/guides/$articleId'
     | '/product/$slug'
   id:
@@ -182,6 +204,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/bank-accounts'
+    | '/calculators'
     | '/contact'
     | '/disclosure'
     | '/faq'
@@ -191,6 +214,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/shipper-draft'
+    | '/calculators/$calcId'
     | '/guides/$articleId'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
@@ -199,6 +223,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BankAccountsRoute: typeof BankAccountsRoute
+  CalculatorsRoute: typeof CalculatorsRouteWithChildren
   ContactRoute: typeof ContactRoute
   DisclosureRoute: typeof DisclosureRoute
   FaqRoute: typeof FaqRoute
@@ -276,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calculators': {
+      id: '/calculators'
+      path: '/calculators'
+      fullPath: '/calculators'
+      preLoaderRoute: typeof CalculatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bank-accounts': {
       id: '/bank-accounts'
       path: '/bank-accounts'
@@ -311,8 +343,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesArticleIdRouteImport
       parentRoute: typeof GuidesRoute
     }
+    '/calculators/$calcId': {
+      id: '/calculators/$calcId'
+      path: '/$calcId'
+      fullPath: '/calculators/$calcId'
+      preLoaderRoute: typeof CalculatorsCalcIdRouteImport
+      parentRoute: typeof CalculatorsRoute
+    }
   }
 }
+
+interface CalculatorsRouteChildren {
+  CalculatorsCalcIdRoute: typeof CalculatorsCalcIdRoute
+}
+
+const CalculatorsRouteChildren: CalculatorsRouteChildren = {
+  CalculatorsCalcIdRoute: CalculatorsCalcIdRoute,
+}
+
+const CalculatorsRouteWithChildren = CalculatorsRoute._addFileChildren(
+  CalculatorsRouteChildren,
+)
 
 interface GuidesRouteChildren {
   GuidesArticleIdRoute: typeof GuidesArticleIdRoute
@@ -329,6 +380,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BankAccountsRoute: BankAccountsRoute,
+  CalculatorsRoute: CalculatorsRouteWithChildren,
   ContactRoute: ContactRoute,
   DisclosureRoute: DisclosureRoute,
   FaqRoute: FaqRoute,
